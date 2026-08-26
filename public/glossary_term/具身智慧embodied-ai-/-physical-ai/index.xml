@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on Tech Pulse 產業脈動快報</title>
-    <link>http://localhost:1313/tech-pulse/posts/</link>
-    <description>Recent content in Posts on Tech Pulse 產業脈動快報</description>
+    <title>具身智慧（Embodied AI / Physical AI） on Tech Pulse 產業脈動快報</title>
+    <link>http://localhost:1313/tech-pulse/glossary_term/%E5%85%B7%E8%BA%AB%E6%99%BA%E6%85%A7embodied-ai-/-physical-ai/</link>
+    <description>Recent content in 具身智慧（Embodied AI / Physical AI） on Tech Pulse 產業脈動快報</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
     <lastBuildDate>Wed, 26 Aug 2026 09:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tech-pulse/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>2026 08 26 Test Post</title>
-      <link>http://localhost:1313/tech-pulse/posts/2026-08-26-test-post/</link>
-      <pubDate>Wed, 26 Aug 2026 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/tech-pulse/posts/2026-08-26-test-post/</guid>
-      <description>測試文章，用來驗證 Phase 2 文章樣板的五段落結構與 Markdown 顯示效果</description>
-    </item>
+    <atom:link href="http://localhost:1313/tech-pulse/glossary_term/%E5%85%B7%E8%BA%AB%E6%99%BA%E6%85%A7embodied-ai-/-physical-ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>北京機器人運動會落幕、宇樹科技坐雲霄飛車：具身智慧狂潮下的中美角力</title>
       <link>http://localhost:1313/tech-pulse/posts/2026-08-26-daily-digest/</link>
