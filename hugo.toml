@@ -6,3 +6,7 @@ theme = 'PaperMod'
 [taxonomies]
   tag = 'tags'
   glossary = 'glossary_term'
+
+[params]
+ShowReadingTime = true
+ShowWordCount = true
