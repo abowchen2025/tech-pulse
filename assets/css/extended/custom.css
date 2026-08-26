@@ -63,3 +63,33 @@
   font-weight: 600;
   white-space: nowrap;
 }
+
+.post-related {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.post-related-title {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.post-related-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.post-related-list li {
+  padding: 1rem;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.post-related-list a {
+  font-weight: 600;
+}
+.post-related-list p {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin-top: 0.3rem;
+}
