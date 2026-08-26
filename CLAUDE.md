@@ -8,16 +8,15 @@
 
 ## 技術架構
 
-- 靜態網站產生器：Hugo
-- 部署：GitHub Pages
-- 內容格式：Markdown + Hugo front matter
+- 靜態網站產生器：Hugo（extended 版本，主題需要 Sass 編譯）
+- 主題：PaperMod（git submodule）
+- 部署：GitHub Pages（透過 GitHub Actions 自動 build + 部署，`public/` 不進版控）
 
 ## 目錄慣例
 
-```
-content/posts/YYYY-MM-DD-slug.md      每日新聞文章
-content/posts/glossary-{term}.md      獨立名詞解釋文章（若某詞值得獨立成篇）
-```
+content/posts/YYYY-MM-DD-slug.md 每日新聞文章
+content/posts/glossary-{term}.md 獨立名詞解釋文章（若某詞值得獨立成篇）
+
 
 slug 用英文小寫連字號，例如 `2026-08-25-generative-ai-funding-shift`。
 
@@ -26,10 +25,12 @@ slug 用英文小寫連字號，例如 `2026-08-25-generative-ai-funding-shift`�
 ```yaml
 title: string
 date: YYYY-MM-DDTHH:MM:SS+08:00
-summary: string        # 30秒重點摘要，作為列表頁與 SEO description
+description: string    # 30秒重點摘要，對應 PaperMod 原生欄位，同時作為列表頁摘要與 SEO description
 tags: [string]          # 對應四大類：physical-ai / generative-ai / ai-agent / us-china-tech
 glossary_term: string   # 這篇挑的名詞小教室用詞，沒有則留空
 ```
+
+> 欄位命名對齊 PaperMod 主題慣例，使用 `description` 而非自訂的 `summary`，避免列表頁摘要需要額外客製模板才能顯示。
 
 ## 內容結構（每篇文章內文順序）
 
@@ -42,15 +43,24 @@ glossary_term: string   # 這篇挑的名詞小教室用詞，沒有則留空
    - PM 視角重點（專案管理、資源調度、風險層面的啟示）
 5. 來源連結列表
 
+文章樣板存放於 `archetypes/posts.md`，執行 `hugo new posts/xxx.md` 會自動帶出上述五段落骨架與對應 front matter。
+
+## 全站連結設定
+
+`layouts/_default/_markup/render-link.html` 已設定全站連結自動加上 `target="_blank" rel="noopener noreferrer"`，來源連結會自動開新分頁，內文撰寫時不需額外加 HTML 標籤。
+
 ## 名詞解釋頁
 
-用 Hugo 標籤（tag）功能聚合，不另外開發獨立頁面。有 `glossary_term` 的文章自動出現在對應標籤頁。
+用 Hugo 標籤（tag）功能聚合，不另外開發獨立頁面。有 `glossary_term` 的文章自動出現在對應標籤頁（`hugo.toml` 內 `[taxonomies]` 已設定 `glossary = 'glossary_term'`）。
 
 ## 開發指令
 
-（第一次建站後由 `hugo new site` 產生，待補上實際指令：本地預覽、build、部署腳本）
+```powershell
+hugo new posts/YYYY-MM-DD-slug.md   # 建立新文章（套用 archetypes/posts.md 樣板）
+hugo server -D                       # 本機預覽，含草稿
+hugo --minify                        # 正式 build（本機測試用，實際部署由 GitHub Actions 執行）
+```
 
 ## 待確認事項
 
-- Hugo 主題：尚未選定，骨架站階段先挑一個免費主題
-- 每日自動化：Cowork Scheduled Task 產生內容後如何寫入 `content/posts/` 並觸發 build+部署，串接方式待第一次實作時確認
+- 每日自動化：Cowork Scheduled Task 產生內容後如何寫入 `content/posts/` 並觸發 build+部署，串接方式待 Phase 3 實作時確認
