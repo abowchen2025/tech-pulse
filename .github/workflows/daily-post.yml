@@ -23,7 +23,7 @@ jobs:
 
       - name: 產生今日文章
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ABOW_CHEN_2025_TECH_PULSE_ANTHROPIC_API_KEY }}
         run: python scripts/generate_post.py
 
       - name: 提交並推送
