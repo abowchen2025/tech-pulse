@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 from datetime import datetime, timezone, timedelta
 import anthropic
 
@@ -42,17 +43,25 @@ draft: false
 
 response = client.messages.create(
     model="claude-sonnet-5",
-    max_tokens=4000,
+    max_tokens=8000,
     tools=[{"type": "web_search_20250305", "name": "web_search"}],
     messages=[{"role": "user", "content": prompt}],
 )
+
+# 除錯資訊：印出結束原因跟各內容區塊類型，方便之後排查
+print(f"stop_reason: {response.stop_reason}")
+print(f"content block types: {[block.type for block in response.content]}")
 
 text_blocks = [block.text for block in response.content if block.type == "text"]
 markdown = "\n".join(text_blocks).strip()
 markdown = re.sub(r"^```[a-zA-Z]*\n|```$", "", markdown).strip()
 
+if not markdown:
+    print("錯誤：沒有抓到任何文字內容，不寫入檔案")
+    sys.exit(1)
+
 filename = f"content/posts/{today}-daily-digest.md"
 with open(filename, "w", encoding="utf-8") as f:
     f.write(markdown)
 
-print(f"寫入完成：{filename}")
+print(f"寫入完成：{filename}（{len(markdown)} 字元）")
