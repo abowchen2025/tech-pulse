@@ -12,3 +12,4 @@ theme = 'PaperMod'
   ShowWordCount = true
   ShowToc = true
   ShowShareButtons = true
+  ShowPostNavLinks = true
