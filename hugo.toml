@@ -1,0 +1,8 @@
+baseURL = 'https://github.com/abowchen2025/tech-pulse/'
+locale = 'zh-tw'
+title = 'Tech Pulse 產業脈動快報'
+theme = 'PaperMod'
+
+[taxonomies]
+  tag = 'tags'
+  glossary = 'glossary_term'
