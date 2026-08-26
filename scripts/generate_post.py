@@ -68,12 +68,16 @@ draft: false
 
 response = client.messages.create(
     model="claude-sonnet-5",
-    max_tokens=8000,
+    max_tokens=16000,
     tools=[{"type": "web_search_20250305", "name": "web_search"}],
     messages=[{"role": "user", "content": prompt}],
 )
 
 print(f"stop_reason: {response.stop_reason}")
+
+if response.stop_reason == "max_tokens":
+    print("錯誤：回應在 max_tokens 被截斷，內容不完整，不寫入檔案")
+    sys.exit(1)
 print(f"content block types: {[block.type for block in response.content]}")
 
 text_blocks = [block.text for block in response.content if block.type == "text"]
