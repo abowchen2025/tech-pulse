@@ -86,9 +86,21 @@ if response.stop_reason == "max_tokens":
     sys.exit(1)
 print(f"content block types: {[block.type for block in response.content]}")
 
-text_blocks = [block.text for block in response.content if block.type == "text"]
+content_blocks = response.content
+last_non_text_idx = -1
+for i, block in enumerate(content_blocks):
+    if block.type != "text":
+        last_non_text_idx = i
+
+# 只取最後一段連續的文字內容（真正的文章本體），排除中途夾帶的旁白句子
+text_blocks = [block.text for block in content_blocks[last_non_text_idx + 1:] if block.type == "text"]
 markdown = "\n".join(text_blocks).strip()
 markdown = re.sub(r"^```[a-zA-Z]*\n|```$", "", markdown).strip()
+
+# 保險機制：就算旁白混進了最終文字區塊裡，也強制從第一個 --- 開始截取
+match = re.search(r"^---", markdown, re.MULTILINE)
+if match:
+    markdown = markdown[match.start():]
 
 converter = opencc.OpenCC('s2twp.json')  # 簡體轉台灣繁體，含用詞轉換
 markdown = converter.convert(markdown)
