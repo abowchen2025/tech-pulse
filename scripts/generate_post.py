@@ -102,7 +102,7 @@ match = re.search(r"^---", markdown, re.MULTILINE)
 if match:
     markdown = markdown[match.start():]
 
-converter = opencc.OpenCC('s2twp.json')  # 簡體轉台灣繁體，含用詞轉換
+converter = opencc.OpenCC('s2twp')  # 簡體轉台灣繁體，含用詞轉換
 markdown = converter.convert(markdown)
 
 if not markdown:
