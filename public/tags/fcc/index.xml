@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tech Pulse 產業脈動快報</title>
-    <link>http://localhost:1313/tech-pulse/</link>
-    <description>Recent content on Tech Pulse 產業脈動快報</description>
+    <title>FCC on Tech Pulse 產業脈動快報</title>
+    <link>http://localhost:1313/tech-pulse/tags/fcc/</link>
+    <description>Recent content in FCC on Tech Pulse 產業脈動快報</description>
     <generator>Hugo</generator>
     <language>zh-tw</language>
     <lastBuildDate>Fri, 28 Aug 2026 09:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tech-pulse/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tech-pulse/tags/fcc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>宇樹暴漲又暴跌、FCC對機器人祭出禁令：具身智慧資本狂潮下的三條戰線</title>
       <link>http://localhost:1313/tech-pulse/posts/2026-08-28-daily-digest/</link>
       <pubDate>Fri, 28 Aug 2026 09:00:00 +0800</pubDate>
       <guid>http://localhost:1313/tech-pulse/posts/2026-08-28-daily-digest/</guid>
       <description>宇樹IPO暴漲又回落、FCC禁外國機器人、LLM密集發布，AI三線同時升溫</description>
-    </item>
-    <item>
-      <title>宇樹破紀錄掛牌、機器人「全員打工」：具身智能商業化元年進行式</title>
-      <link>http://localhost:1313/tech-pulse/posts/2026-08-27-daily-digest/</link>
-      <pubDate>Thu, 27 Aug 2026 09:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/tech-pulse/posts/2026-08-27-daily-digest/</guid>
-      <description>宇樹科技破人類紀錄登板科創板，AI模型與算力軍備競賽升溫，各國監管加速立法</description>
     </item>
   </channel>
 </rss>
