@@ -62,6 +62,8 @@
   font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
+  margin-left: auto;
+  padding-left: 1rem;
 }
 
 .post-related {
@@ -95,7 +97,7 @@
 }
 
 .post-content blockquote {
-  background: var(--entry);
+  background: color-mix(in srgb, var(--entry) 82%, black 5%);
   border-left: 4px solid var(--primary);
   border-radius: 8px;
   padding: 1rem 1.5rem;
@@ -111,4 +113,10 @@
   margin-top: 1.5rem;
   padding-top: 0;
   border-top: none;
+}
+
+.entry-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
