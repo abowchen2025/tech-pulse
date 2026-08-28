@@ -1,153 +1,130 @@
 ---
-title: "宇樹暴漲又暴跌、FCC對機器人祭出禁令：具身智慧資本狂潮下的三條戰線"
+title: "Unitree暴漲629%登科創板，FCC對中國機器人祭禁令：具身智慧賽局白熱化"
 date: 2026-08-28T09:00:00+08:00
-description: "宇樹IPO暴漲又回落、FCC禁外國機器人、LLM密集發布，AI三線同時升溫"
-tags: ["physical-ai", "ai-policy", "Unitree", "FCC"]
-glossary_term: "FCC Covered List（受管制清單）"
+description: "宇樹科技上海掛牌狂飆，FCC與臺灣同步收緊晶片機器人管制，AI政策攻防再升溫"
+tags: ["physical-ai", "ai-policy", "unitree", "fcc"]
+glossary_term: "FCC Covered List"
 draft: false
 ---
 
 ## 30秒看重點
-- 宇樹科技（Unitree）在上海科創板首日暴漲460%，市值一度衝破600億美元，隨後又出現大幅回落，資本狂熱與泡沫疑慮並存。
-- 北京世界機器人大會展出逾2000件機器人展品，但業界龍頭也坦言機器人仍不如人類靈活、學習新技能仍慢。
-- 美國FCC把外國製造的人形機器人、機器狗，甚至掃地機器人都納入「受管制清單」，中國業者首當其衝。
-- 生成式AI新模型密集發布，Databricks等基礎設施業者單月狂募87億美元，AI Agent則出現「代理洗白」亂象。
+- 中國人形機器人龍頭宇樹科技（Unitree）在上海科創板掛牌首日暴漲460%，盤中一度衝上629%，市值直逼千億人民幣，但創辦人隨即坦承機器人效率仍不如人類。
+- 中國AI公司Z.ai發表宣稱「純靠中國晶片」執行的新模型，凸顯中美晶片戰下中國自主算力的進展與焦慮。
+- Salesforce最新報告顯示，企業匯入AI代理（Agent）數量在一年多內近乎三倍成長，但誰該為代理犯錯負責的治理問題仍無解。
+- 美國FCC對中國機器人祭出禁售清單，臺灣同步研議收緊AI晶片對中出口管制，而NCC「零委員」空窗期則讓臺灣通訊監理陷入停擺。
 
-## 宇樹上市暴衝又回落，具身智慧的資本狂歡是真是假？
-今年最戲劇性的科技資本市場事件，莫過於中國人形機器人廠商宇樹科技在上海證交所科創板的掛牌首日。
-Unitree Robotics shares surged 460% in their Shanghai trading debut after the company raised 6.1 billion yuan ($904 million) in an initial public offering, becoming the first listed humanoid robot maker in mainland China.
-盤中漲幅一度更為誇張，公司創辦人王興興也在世界機器人大會上公開演講，坦言
-機器人還不如人類有效率，學習新技能也需要時間，這對產業來說是個瓶頸
-，而就在他發表這番言論隔天，
-Unitree股價週四下跌18.7%
+## Unitree暴漲629%掛牌之後，人形機器人真的能上工了嗎？
+中國人形機器人代表廠商宇樹科技（Unitree Robotics）8月19日在上海證交所科創板掛牌，
+股價在上海掛牌首日暴漲460%，公司透過首次公開發行募得人民幣61億元（約9.04億美元），成為中國大陸第一家掛牌的人形機器人製造商
+。
+盤中股價一度較發行價暴漲629%，開盤衝上1,100元人民幣，讓這家中國最知名的人形機器人公司市值一度衝上約445億人民幣（約66億美元）
 。
 
-狂熱退燒的速度同樣驚人：
-股價一度衝上估值約660億美元的高點，隨後的下跌抹去了約300億美元的市值
-。這波「先暴漲、再回吐」的走勢，也讓外媒開始討論中國具身智慧產業是否正在形成資本泡沫——畢竟目前多數人形機器人仍停留在展示與試點階段，距離大規模商業落地還有一段距離。
-
-> **名詞小教室**：Physical AI（具身智慧）指的是讓AI不只存在於雲端聊天視窗，而是「長出身體」去感知、移動、操作真實世界的技術，涵蓋人形機器人、機器狗、機械手臂等。今年被視為具身智慧從實驗室走向工廠與家庭的關鍵一年。
-
-## 北京世界機器人大會人山人海，但機器人真的準備好了嗎？
-
-2026世界機器人大會8月19日至23日在北京舉行，展出逾300家參展商與超過3000件產品，中國人形機器人格外吸引全球買家目光
-。現場不只是走秀，也出現不少商業化數字：優必選訂單破萬臺、智元科技累計量產具身智慧機器人已破1.5萬臺等訊息陸續傳出，顯示部分廠商確實在往量產推進。
-
-不過國際媒體的觀察角度較為謹慎。CNBC報導指出，
-人形機器人產業在2026年迎來創紀錄的投資、擴大的產能與越來越多的工廠試點，但產業也正面對更嚴苛的考驗：證明兩足機器人能可靠且划算地完成有用的工作，足以與人類、傳統機器人及更簡單的移動系統競爭
-。換句話說，展場的熱鬧與實際上崗能力之間，仍有明顯落差。臺灣這邊也沒有缺席，
-8月19日登場的2026臺灣機器人與智慧自動化展，Physical AI（實體AI）成為全場關鍵字
-，從AI視覺辨識到精密傳動模組，臺廠正沿著機器人供應鏈全面卡位。
-
-## FCC把機器人和掃地機器人一起「拉黑」，臺灣消費者也受影響？
-就在具身智慧產業狂歡之際，美國政府這邊卻同步收緊監管。
-美國聯邦通訊委員會（FCC）於週二將外國製造的「先進機器人裝置」納入所謂的受管制清單，阻止新機型取得美國進口與銷售所需的裝置授權
-。這項禁令範圍出乎許多人意料，
-禁令範圍廣泛，涵蓋重量超過2公斤（4.4磅）、具備移動、避障導航及特定網路連線能力的裝置，包括其充電座在內
-，意味著不只是酷炫的人形機器人與機器狗，連家用掃地機器人、掃地機、割草機器人都可能被波及。
-
-受衝擊最大的正是中國品牌，
-中國品牌石頭科技（Roborock）、科沃斯（Ecovacs）、追覓（Dreame）、小米與雲鯨智慧合計在2025年佔全球掃地機器人市場68%的份額
-。而這項禁令其實早有伏筆，
-FCC在7月底已將外國製造的人形機器人與機器狗列入受管制清單，理由是國家安全考量，也促使中國商務部揚言採取反制措施
-。對已經買了掃地機器人的臺灣或美國消費者來說不必恐慌——禁令只針對「新款」尚未取得授權的機型，現有庫存與已購買產品不受影響，但長期來看，市面上可選購的外國機型陣容勢必逐漸縮水。
-
-> **名詞小教室**：FCC Covered List（受管制清單）是美國聯邦通訊委員會列出「被認定對美國國家安全或人身安全構成不可接受風險」的通訊與科技裝置清單，一旦上榜，新機型將無法取得在美銷售所需的裝置授權，等於變相禁售。
-
-## LLM新模型接力發布，AI基礎設施單月狂吸金87億美元
-生成式AI這邊完全沒有慢下來的跡象。
-光是8月，就有14款新AI模型從8家業者手中發布
-，
-最新的是Z.AI於8月26日推出的GLM-5.3 Flash，緊接著是DeepSeek於8月21日發布的V4 Flash Vision Exp
-，同期阿里巴巴也持續加碼，
-Qwen Image 3.0 Pro由阿里巴巴於8月5日發布
+不過，狂熱氣氛在同一週的北京世界機器人大會上被潑了冷水。
+Unitree創辦人王興興在大會上直言，機器人效率仍不如人類，學習新技能也需要時間，這已成為產業發展的瓶頸
+，發言時間就在公司股價暴漲隔天。市場情緒也迅速反轉，
+Unitree股價在週四重挫18.7%
 。
 
-不只是AI實驗室在推陳出新，連老牌內容與金融資訊公司也下場自建模型。
-湯森路透（Thomson Reuters）宣佈推出自家第一款自主研發的大型語言模型「Thomson」
-，特別的是其開發路徑並非砸重本從零訓練，而是
-從一個強大的開源基礎出發，投入4000萬美元將Thomson訓練成最適合處理其核心業務的智慧引擎
-，也算是替中大型企業「自建輕量模型」提供了一個參考案例。
+> **名詞小教室**：具身智慧（Physical AI）指的是讓AI不只停留在螢幕裡回答問題，而是裝進機器人、機械手臂等實體載具，透過感測器「看懂」環境並自主做出動作決策，是目前機器人產業最熱門的技術方向。
 
-而在算力與基礎設施的資本市場上，8月同樣是狂熱的一個月：
-Databricks的50億美元募資、Firmus的20億美元、Castelion的10億美元C輪，加上Etched的7億美元，8月單月AI基礎設施及相關資本密集型領域募資總額達到87億美元
-，其中
-Databricks以190億美元估值完成的50億美元策略性募資，就佔了當月基礎設施資本的57%
-，投資陣容包括Coatue、Blackstone、MGX與T. Rowe Price等重量級機構。
+值得注意的是，
+海外銷售佔Unitree去年主要業務營收約44%
+，但
+美國聯邦通訊委員會（FCC）7月底已將外國製人形與四足機器人列入禁售清單，理由是國家安全考量，此舉也引發中國商務部揚言反制
+。狂歡與地緣政治風險同時存在，正是這波人形機器人熱潮最矛盾的地方。
 
-## AI Agent從實驗走向規模化，但「代理洗白」亂象也浮上檯面
-AI Agent（智慧體）今年被業界稱為從「聊天助理」邁向「自主執行者」的關鍵年，但落地過程並非一帆風順。臺灣企業匯入速度不慢，
-根據DIGITIMES的調查報告，臺灣有超過45%的上市櫃公司已在2025年底前啟動AI Agent相關專案，其中又以半導體業、金融業和零售業的匯入速度最快
+## 中國搶攻「純國產」AI晶片，這代表什麼訊號？
+中國AI新創Z.ai本週發表新模型，
+宣稱該模型完全在中國自製晶片上執行，被視為中國提升自主運算能力的最新指標，訊息一出帶動公司股價上漲
+。同業也搭上這波熱潮，
+競爭對手MiniMax上半年營收年增近300%，股價同步上漲約3%
 。
 
-不過市場也出現雜音。研究機構指出
-市面上自稱具備agentic能力的廠商數以千計，但真正具備完整代理能力的僅約130家，業界普遍存在「agent washing（代理洗白）」現象——把舊有的AI助理、RPA、Chatbot重新包裝成Agent，實際上仍缺乏自主規劃與多步驟執行能力
-。這意味著企業採購AI Agent時，光看行銷話術已經不夠，得要求廠商實際演示系統遇到未預設情境時的處理能力。
+這波「去美化晶片」的敘事，其實也跟另一條新聞互相呼應：美國對中國的晶片出口管制正出現「雲端漏洞」。
+儘管美國限制輝達最先進晶片（包括GB300）直接出口中國，但已有多家中國AI公司被指出能透過東南亞的資料中心，遠端取得這些晶片的運算能力
+。
+白宮官員Michael Kratsios就指控，中國AI公司Moonshot AI在7月發表新模型前，透過泰國一處設施使用了輝達GB300晶片
+。專家分析，
+美國現行出口管制規範管的是實體AI晶片本身，並不涵蓋對這些晶片的遠端存取
+，等於留下了一道規則沒堵上的門。
 
-> **名詞小教室**：Agent washing（代理洗白）指業者把原本的規則型聊天機器人、RPA流程自動化工具，貼上「AI Agent」的新標籤重新包裝行銷，但實際上並不具備自主規劃、判斷與多步驟執行的核心能力。
+## 企業AI代理數量近三倍成長，但誰該為它犯錯負責？
+根據Salesforce最新發布的《Agentic Enterprise Index》報告，
+企業平均部署的AI代理數量，從2025年初的5個，到2026年4月已幾乎成長三倍達到13個，該報告分析了400家企業的實際生產資料，並調查近5,000人
+。更驚人的是應用深度，
+在該資料集涵蓋的企業中，已有七成客服互動是由AI代理完全自主處理，而且需要人工介入的比例維持穩定
+。
 
-## 臺灣AI治理邁入落地期，全球監管路線也持續分歧
-在監管面，臺灣的腳步也沒有停下來。
-臺灣AI治理正從「原則與立法」正式進入「風險評估、內控、人才、教育與實際應用」的落地階段
-，數位發展部並已於今年7月訂出具體的風險分類框架，逐步把《人工智慧基本法》的政策宣示轉化為可執行的行政規範。
+> **名詞小教室**：AI Agent（AI代理）不是單純聊天回答問題的AI，而是能自己規劃步驟、呼叫外部工具、跨系統執行多步驟任務的軟體，例如自動讀信、更新系統紀錄、觸發付款等，是目前企業匯入AI最積極的方向之一。
 
-而放眼全球，各主要經濟體的AI監管路線持續分歧：歐盟持續走在最嚴格的一端，
-2026年8月，歐盟《人工智慧法案》高風險系統合規要求全面生效，禁止利用潛意識技術或針對年齡、殘疾等群體弱點來扭曲個體行為的系統
-，相對地美國則傾向鬆綁監管、優先確保國家安全與技術領先地位。這種「歐盟立規則、美國拚領先、中國統籌發展與安全」的三分天下格局，短期內看不出收斂的跡象。
+但代理跑得越快，責任歸屬問題就越棘手。有分析指出，
+隨著更多自主代理進入正式營運，8月開始浮現的治理缺口逐漸明顯——當代理刪錯紀錄、寄出錯誤郵件或誤判檔案時，該由誰負責，多數企業目前都還沒有明確答案，法務團隊也還在追趕技術部署的腳步
+。這也是為什麼越來越多企業開始要求代理留下完整的行為紀錄，作為未來釐清責任的依據。
+
+## FCC對中國機器人祭出禁令，臺灣為何也要跟進收緊晶片管制？
+美國這頭，FCC在7月底出手了。
+美國聯邦通訊委員會以「國家安全」為由，禁止進口外國製人形機器人裝置與電力變流器，並將這些產品列入「禁售清單」（Covered List），意味著這些產品對美國國家安全或民眾人身安全構成「不可接受的風險」
+。
+具體規定是重量超過2公斤、具連網通訊能力的行動機器人，以及太陽能常用的電力變流器，都被列入清單，任何國家生產的新產品都不再符合進口資格
+。這項決定並非空穴來風，
+FCC在把機器人列入清單時，特別提到在Unitree機器人身上發現的資安漏洞
+。
+
+> **名詞小教室**：Covered List（禁售清單）是美國FCC依《Secure and Trusted Communications Networks Act》建立的清單，一旦產品被列入，就無法再取得FCC核准銷售、行銷或進口到美國，過去華為、中興通訊的裝置也曾被列入。
+
+太平洋這一邊，臺灣也在同步跟進。
+據彭博社報導，臺灣當局正考慮對銷往中國的AI晶片實施更嚴格出口管制，以進一步與美國措施保持一致，目的是解決半導體走私問題，但可能招致北京當局的譴責
+。對此，
+經濟部回應表示，將持續強化臺灣戰略性高科技貨品的管理機制，以符合國際出口管制發展趨勢，並同時保障國家安全
+。美中臺三方的晶片與機器人管制動作，正呈現越來越緊密的連動關係。
+
+## NCC「零委員」空窗期，臺灣通訊監理誰來把關？
+就在國際科技管制風起雲湧之際，臺灣國內的通訊傳播監理機關卻陷入罕見的空轉狀態。
+NCC委員陳崇樹、王正嘉及王怡惠上月底任期屆滿後，自8月1日起，NCC出現廿年來首度無任何委員可行使職權的情形，通訊與傳播重要業務進入完全無人審議的空前癱瘓狀態
+。民團也提出警告，
+NCC法定員額為7人，但因立法院遲未透過人事同意權，自8月1日起進入無委員空窗期，四大領域業務全面停擺
+，包括假新聞防治、電信重大消費爭議處理等業務都受到影響。在AI詐騙、深偽內容日益氾濫的當下，監理機關「開天窗」的時機格外敏感。
 
 ## 編輯觀點
-把這幾則新聞放在一起看，我覺得最有意思的張力在於「資本熱度」跟「監管冷水」幾乎是同步發生的。宇樹一邊創造上海股市年度最戲劇性的IPO故事，一邊又在同一週被美國FCC點名列管；具身智慧產業一邊喊出量產與訂單數字，一邊業界龍頭自己也承認機器人還做不到人類的水準。這種矛盾感其實反映了產業真實的階段——技術與資本都跑得很快，但監管者與市場信心正在同步進行「壓力測試」，泡沫與突破往往就是一線之隔。AI Agent領域的「代理洗白」現象也是同樣道理：當一個詞彙被炒得太熱，魚目混珠的產品自然會變多，這時候反而更該回頭問「這個系統到底能不能自己做決定」，而不是看行銷簡報寫了什麼。
+把這幾則新聞放在一起看，我感受到的是一種奇特的錯位感：資本市場對機器人和AI的熱情正衝上歷史高點，但技術本身離「真的能穩定幹活」還有一段距離，政策制定者則在資安、供應鏈與國家安全的焦慮中不斷加碼管制。Unitree一邊被投資人捧上天，創辦人卻自己承認機器人效率不如人類；企業瘋狂匯入AI代理，卻連出錯了該找誰負責都講不清楚。這種「先衝規模、後補治理」的節奏，某種程度上也是這整個產業的縮影——大家都怕慢了會錯過紅利，卻很少有人願意先把安全網補齊。臺灣夾在美中兩強的晶片管制拉鋸之間，國內監理機關自己卻先停擺，這種內外落差其實更值得我們警惕。
 
 ## 明天值得關注
-接下來幾天值得留意的，一是宇樹股價後續走勢會不會持續回落，這將是觀察中國具身智慧資本熱是否降溫的重要指標；二是FCC受管制清單的執行細節與中國政府的反制措施是否進一步升級，可能牽動更多機器人供應鏈廠商的訂單能見度；三是LLM發布潮會不會有更重量級的旗艦模型登場（例如各家針對GLM-5.3、DeepSeek V4系列的後續評測結果），這將影響企業選型的天平。
+接下來幾週有幾個值得盯緊的節點：一是比亞迪確認將在8月內發表首款人形機器人，會不會進一步推升中國車廠跨界機器人的競爭態勢；二是臺美貿易談判中關於AI晶片出口管制的細節何時拍板，這將直接牽動臺積電、聯發科等臺廠的訂單佈局；三是立法院是否會加速審查NCC委員人事同意權，讓監理業務恢復運作；四是在「AI代理治理缺口」持續發酵下，是否會有更多企業或監管機關提出具體的代理稽核與究責標準。這些發展都將決定「具身智慧」與「代理式AI」熱潮，究竟是走向紮實的產業升級，還是又一輪先炒熱、後收拾的迴圈。
 
 ## 今日 GitHub Trend
-**[deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)** — 
-截至2026年8月27日，依star成長速度排名，deepseek-ai/deepseek-harness以「Everything is a Plugin」為理念，達到約20萬顆星，7天內新增約2.8萬顆星
-，是目前AI Agent類別中成長最快的專案，顯示外掛式的Agent執行框架正受到開發者高度關注。
+**[huggingface/lerobot](https://github.com/huggingface/lerobot)** — 目前約2.69萬顆星、5,500次fork，是Hugging Face維護的機器人學習開源函式庫。近期因
+整合NVIDIA Isaac GR00T 1.7視覺語言動作（VLA）基礎模型與Isaac Teleop遠端操作框架，讓開發者能一條龍完成資料蒐集、模型訓練、測試到部署
+而再度受到關注，是目前具身智慧開發者最常用的起手式工具之一。
 
-**OpenClaw** — 
-在60天內從9千顆星暴衝到18.8萬顆星，是近期成長最快的repo
-，被視為「Agent meta-harness」的代表作，反映開發者對可自訂、可組合的Agent執行環境需求強烈。
-
-**[A2A Protocol](https://github.com/a2aproject/A2A)** — 
-由Google推出的開放協議，讓不同框架下的AI Agent能夠彼此溝通、協作並委派任務
-，隨著多Agent協作成為業界共識，這類標準化「Agent對Agent」通訊協議的重要性也持續上升。
+**[browser-use/browser-use](https://github.com/browser-use/browser-use)** — 目前約7.85萬顆星，是讓AI代理能像人類一樣操作瀏覽器、點選網頁與填寫表單的自動化框架。近期釋出0.13.8版本，
+新增對OpenClaw skill的原生支援，並修復多項代理與瀏覽器互動的相關問題
+，顯示這類「讓AI代理動手做事」的基礎建設仍在持續迭代。
 
 ## 常見問題 FAQ
 
-### 宇樹股價暴漲又回落，代表具身智慧產業要泡沫化了嗎？
-目前還不能這樣下結論。
-這波股價劇烈波動並不足以證明整個機器人產業陷入泡沫，但確實顯示當公司市值上漲速度遠超過其實際業務成長時，市場預期能有多快改變
-。換言之，這更像是市場對新股炒作的正常回檔，而非產業基本面出現問題，但確實值得投資人留意「炒作」與「真實商業化進度」之間的落差。
+### FCC的Covered List對一般消費者有什麼實際影響？
+影響主要在「未來能不能買到新機種」，而不是收回現有產品。已經取得FCC認證、正在市面上銷售的舊型號（例如部分Unitree G1機型）不受影響，但新一代的外國製人形機器人、四足機器人往後將無法取得美國銷售所需的FCC認證，等於逐步把中國新機種擋在美國市場之外。
 
-### FCC的機器人禁令會讓我家裡的掃地機器人不能用嗎？
-不會。
-FCC表示這項新政策不會影響市面上已在銷售的掃地機器人、消費者已購買的裝置，或目前正在銷售的既有機型
-，禁令只針對「未來申請新授權」的外國製造新機型，換句話說是「限制新款進口」，而非「回收現有產品」。
-
-### 什麼是「Agent washing（代理洗白）」，企業要怎麼分辨真假AI Agent？
-簡單說就是把舊技術貼上新標籤行銷。企業在採購前，建議要求廠商實際示範系統在「遇到未預設情境」時的應對能力，觀察它是否真的具備自主規劃、多步驟執行與工具呼叫能力，而不是單純看行銷簡報上的Agent字樣。
+### 臺灣為什麼要跟進美國限制AI晶片出口到中國？
+主要原因是防止搭載輝達等先進晶片的AI伺服器等硬體，經由臺灣轉運流入中國，避免臺灣被指為美國晶片管制的漏洞。目前臺灣官員正評估是否賦予更明確的法律工具，讓未經授權轉運高階AI晶片到中國的行為，未來可能首度面臨刑事責任。
 
 ## 來源連結
-- [Unitree Robotics Surges 460% After $904 Million Shanghai IPO - Bloomberg](https://www.bloomberg.com/news/articles/2026-08-18/unitree-robotics-set-to-debut-after-904-million-shanghai-ipo)
-- [Unitree’s Stock Plunge After IPO Raises Fears of a Chinese Robotics Bubble](https://colombiaone.com/2026/08/25/unitrees-stock-plunge-ipo-raises-fears-robotics/)
-- [Chinese humanoid robots' biggest obstacle: Humans are still (mostly) better - CNBC](https://www.cnbc.com/2026/08/21/chinese-humanoid-robots-face-challenge-of-their-own-capabilities.html)
-- [World Robot Conference: What can humanoid robots actually do? - CGTN](https://news.cgtn.com/news/2026-08-22/World-Robot-Conference-What-can-humanoid-robots-actually-do--1POVSXuLR8Q/p.html)
-- [2026機器人展｜人形機器人出貨年增700% - 數位時代 BusinessNext](https://www.bnext.com.tw/article/91918/2026-automationtaipei-robot)
-- [China’s smart-vacuum giants swept up in US robot ban - South China Morning Post](https://www.scmp.com/tech/policy/article/3362418/chinas-smart-vacuum-giants-swept-us-robot-ban-hitting-top-options-americans)
-- [FCC Restricts Future Foreign-Made Robot Vacuums, Existing Models Unaffected - Vacuum Wars](https://vacuumwars.com/fcc-restricts-future-foreign-made-robot-vacuums-existing-models-unaffected/)
-- [New AI Model Releases — August 2026 Timeline | LLM Gateway](https://llmgateway.io/timeline)
-- [LLMs Released in 2026 — AI Model Release Dates | LLM Gateway](https://llmgateway.io/timeline/2026)
-- [Thomson Reuters Leverages its World-Class Data Assets to Launch Its Own Frontier Model](https://www.thomsonreuters.com/en/press-releases/2026/august/thomson-reuters-leverages-its-world-class-data-assets-to-launch-its-own-frontier-model)
-- [AI infrastructure funding August 2026: $8.7B tracker | Value Add Pulse](https://valueaddvc.com/pulse/pulse-analysis-ai-infrastructure-funding-8-7-billion-2026)
-- [AI Agent 企業應用大革命 - AI未來世代](https://wowgaopei.com/ai-agent-enterprise-applications-2026/)
-- [AI Agent 企業應用案例 2026｜5 大部門實戰解析 - Data-DI](https://www.data-di.com/blog/ai-lab-case2026)
-- [CCChen 0805 AI更新整理｜2026臺灣AI治理進入落地期](https://vocus.cc/article/6a72b810fd8978000157d077)
-- [與AI共存．三｜AI立法競賽——中美歐誰能定義全球規則？](https://global.hk01.com/%E6%B7%B1%E5%BA%A6%E6%8A%A5%E9%81%93/60336868/%E4%B8%8Eai%E5%85%B1%E5%AD%98-%E4%B8%89-ai%E7%AB%8B%E6%B3%95%E7%AB%9E%E8%B5%9B-%E4%B8%AD%E7%BE%8E%E6%AC%A7%E8%B0%81%E8%83%BD%E5%AE%9A%E4%B9%89%E5%85%A8%E7%90%83%E8%A7%84%E5%88%99)
-- [30 Best AI Agent GitHub Repos (August 2026) | findarepo](https://findarepo.com/categories/ai-agents/)
-- [GitHub - caramaschiHG/awesome-ai-agents-2026](https://github.com/caramaschiHG/awesome-ai-agents-2026)
-- [GitHub - ARUNAGIRINATHAN-K/awesome-ai-agents-2026](https://github.com/ARUNAGIRINATHAN-K/awesome-ai-agents-2026)
+- [Bloomberg - Unitree Robotics Surges 460% After $904 Million Shanghai IPO](https://www.bloomberg.com/news/articles/2026-08-18/unitree-robotics-set-to-debut-after-904-million-shanghai-ipo)
+- [South China Morning Post - Unitree Robotics surges 629% to US$66 billion valuation](https://www.scmp.com/tech/tech-trends/article/3364499/unitree-robotics-surges-629-us66-billion-valuation-shanghai-share-debut)
+- [CNBC - Chinese humanoid robots' biggest obstacle: Humans are still (mostly) better](https://www.cnbc.com/2026/08/21/chinese-humanoid-robots-face-challenge-of-their-own-capabilities.html)
+- [Yahoo奇摩股市 - 彭博：臺灣考慮對銷往中國AI晶片實施更嚴格出口管制](https://tw.stock.yahoo.com/news/%E6%93%AC%E9%85%8D%E5%90%88%E7%BE%8E%E5%9C%8B%E6%94%BF%E7%AD%96-%E5%BD%AD%E5%8D%9A-%E5%8F%B0%E7%81%A3%E8%80%83%E6%85%AE%E5%B0%8D%E9%8A%B7%E5%BE%80%E4%B8%AD%E5%9C%8Bai%E6%99%B6%E7%89%87%E5%AF%A6%E6%96%BD%E6%9B%B4%E5%9A%B4%E6%A0%BC%E5%87%BA%E5%8F%A3%E7%AE%A1%E5%88%B6-123836930.html)
+- [聯合新聞網 - 彭博：臺AI晶片擬禁止銷陸 牽動晶圓代工鏈出貨](https://udn.com/news/story/7240/9556429)
+- [CNBC - Z.ai shares surge 8% after releasing new AI model using Chinese chips](https://www.cnbc.com/2026/08/27/zai-shares-surge-new-ai-model-using-chinese-chips.html)
+- [CNBC - China AI firms tap Nvidia power overseas as U.S. weighs curbs](https://www.cnbc.com/2026/08/19/china-ai-nvidia-chips-us-export-controls.html)
+- [MarketingProfs - AI Update, August 21, 2026](https://www.marketingprofs.com/opinions/2026/55655/ai-update-august-21-2026-ai-news-and-views-from-the-past-two-weeks)
+- [The Hill - Trump administration bans foreign-made humanoid robots](https://thehill.com/homenews/5996462-fcc-bans-foreign-humanoid-robots/)
+- [IEEE Spectrum - FCC Covered List Bans New Foreign Mobile Robots in US](https://spectrum.ieee.org/fcc-covered-list-mobile-robots)
+- [Rest of World - U.S. ban on Chinese robots strands American startups](https://restofworld.org/2026/china-robot-ban-silicon-valley/)
+- [經濟民主連合 - NCC 廿年首度零委員](https://www.edunion.org.tw/newsrelease/20260806/)
+- [大紀元 - NCC委員歸零 四大業務陷停擺危機](https://www.epochtimes.com/b5/26/8/6/n14824388.htm)
+- [GitHub - huggingface/lerobot](https://github.com/huggingface/lerobot)
+- [GitHub - browser-use/browser-use](https://github.com/browser-use/browser-use)
 
 ---
 
