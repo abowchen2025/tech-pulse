@@ -93,3 +93,22 @@
   color: var(--secondary);
   margin-top: 0.3rem;
 }
+
+.post-content blockquote {
+  background: var(--entry);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.post-content h2 {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.post-content h2:first-of-type {
+  margin-top: 1.5rem;
+  padding-top: 0;
+  border-top: none;
+}

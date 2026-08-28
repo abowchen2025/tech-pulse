@@ -3,6 +3,7 @@ import re
 import sys
 from datetime import datetime, timezone, timedelta
 import anthropic
+import opencc
 
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
@@ -17,6 +18,11 @@ prompt = """你是「產業脈動追蹤網站」(tech-pulse) 的每日內容產�
 (3) AI Agent與自動化的產業應用案例
 (4) AI政策與監管動態（含中美競爭，也包含國內監管/法律行動、平台治理爭議）
 每類找2-4篇當天或近3天內的新聞。
+
+來源選擇原則：
+- 優先採用國際主流媒體（如The Verge、TechCrunch、Bloomberg、Reuters、CNBC、日經等）與台灣本地媒體（如數位時代、科技報橘、iThome），單一地區來源不要超過整體來源的一半
+- 避免來源集中在單一國家的內容農場或訂閱聚合平台，優先選有具名記者、有公信力的原始報導
+- 報導中國相關新聞時，優先採用國際第三方媒體的報導角度，若引用中國本地媒體或企業官方發布，需保持查證與批判距離，不逕自複述業者自身的宣傳成就
 
 另外搜尋近期 GitHub Trending 上，跟以上四大主題相關的熱門開源專案，挑2-3個。
 
@@ -48,7 +54,7 @@ draft: false
 （一段前瞻性內容）
 
 ## 今日 GitHub Trend
-（2-3個相關開源專案，各一句話說明是什麼、為何值得關注，可用清單格式）
+（2-3個相關開源專案，每個項目格式：**[專案完整名稱](GitHub連結網址)** — 星數與近期成長幅度，接著1-2句說明為何入選/值得關注。星數與成長數字須來自實際搜尋結果，不要憑空估計）
 
 ## 常見問題 FAQ
 
@@ -83,6 +89,9 @@ print(f"content block types: {[block.type for block in response.content]}")
 text_blocks = [block.text for block in response.content if block.type == "text"]
 markdown = "\n".join(text_blocks).strip()
 markdown = re.sub(r"^```[a-zA-Z]*\n|```$", "", markdown).strip()
+
+converter = opencc.OpenCC('s2twp.json')  # 簡體轉台灣繁體，含用詞轉換
+markdown = converter.convert(markdown)
 
 if not markdown:
     print("錯誤：沒有抓到任何文字內容，不寫入檔案")

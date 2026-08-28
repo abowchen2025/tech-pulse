@@ -2,14 +2,16 @@ baseURL = 'https://abowchen2025.github.io/tech-pulse/'
 locale = 'zh-tw'
 title = 'Tech Pulse 產業脈動快報'
 theme = 'PaperMod'
+hasCJKLanguage = true
 
 [taxonomies]
   tag = 'tags'
   glossary = 'glossary_term'
 
 [params]
+  TocOpen = true
   ShowReadingTime = true
   ShowWordCount = true
   ShowToc = true
-  ShowShareButtons = true
+  ShowShareButtons = false
   ShowPostNavLinks = true
