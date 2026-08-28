@@ -1,8 +1,6 @@
 name: 每日文章自動產生
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # UTC 00:00，等於台灣時間 08:00
   workflow_dispatch:
 
 permissions:
@@ -20,7 +18,7 @@ jobs:
           python-version: '3.12'
 
       - name: 安裝相依套件
-        run: pip install anthropic
+        run: pip install anthropic opencc-python-reimplemented
 
       - name: 產生今日文章
         env:
