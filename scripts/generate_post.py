@@ -72,12 +72,15 @@ draft: false
 > 這份快報由 AI 根據上方引用來源整理，每日 08:00 自動發佈。
 """.format(today=today)
 
-response = client.messages.create(
+with client.messages.stream(
     model="claude-sonnet-5",
     max_tokens=24000,
     tools=[{"type": "web_search_20250305", "name": "web_search"}],
     messages=[{"role": "user", "content": prompt}],
-)
+) as stream:
+    for event in stream:
+        pass  # 不需要即時顯示內容，等串流跑完直接取得完整結果
+    response = stream.get_final_message()
 
 print(f"stop_reason: {response.stop_reason}")
 
