@@ -1,13 +1,52 @@
 import os
 import re
 import sys
-from datetime import datetime, timezone, timedelta
+import json
+from pathlib import Path
+from datetime import datetime, timezone, timedelta, date
 import anthropic
 import opencc
 
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 today = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d")
+today_date = date.fromisoformat(today)
+
+HISTORY_FILE = Path("scripts/github_trend_history.json")
+HISTORY_DISPLAY_DAYS = 14
+HISTORY_KEEP_DAYS = 30
+
+
+def load_recent_trend_repos(days=HISTORY_DISPLAY_DAYS):
+    if not HISTORY_FILE.exists():
+        return []
+    with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    cutoff = today_date - timedelta(days=days)
+    recent = {r["repo"] for r in records if date.fromisoformat(r["date"]) >= cutoff}
+    return sorted(recent)
+
+
+def append_trend_repos(repos):
+    records = []
+    if HISTORY_FILE.exists():
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            records = json.load(f)
+    for repo in repos:
+        records.append({"date": today, "repo": repo})
+    cutoff = today_date - timedelta(days=HISTORY_KEEP_DAYS)
+    records = [r for r in records if date.fromisoformat(r["date"]) >= cutoff]
+    HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(records, f, ensure_ascii=False, indent=2)
+
+
+recent_repos = load_recent_trend_repos()
+avoid_note = ""
+if recent_repos:
+    avoid_note = "過去 {} 天已經介紹過這些專案，這次不要重複選（除非有重大更新新聞，且需特別說明為何值得再次入選）：{}".format(
+        HISTORY_DISPLAY_DAYS, "、".join(recent_repos)
+    )
 
 prompt = """你是「產業脈動追蹤網站」(tech-pulse) 的每日內容產生器。
 
@@ -24,7 +63,7 @@ prompt = """你是「產業脈動追蹤網站」(tech-pulse) 的每日內容產�
 - 避免來源集中在單一國家的內容農場或訂閱聚合平台，優先選有具名記者、有公信力的原始報導
 - 報導中國相關新聞時，優先採用國際第三方媒體的報導角度，若引用中國本地媒體或企業官方發布，需保持查證與批判距離，不逕自複述業者自身的宣傳成就
 
-另外搜尋近期 GitHub Trending 上，跟以上四大主題相關的熱門開源專案，挑2-3個。
+另外搜尋近期 GitHub Trending 上，跟以上四大主題相關的熱門開源專案，挑2-3個。{avoid_note}
 
 【第二步：整理成文章】
 用繁體中文台灣用語，整理成一篇 Markdown 文章，格式如下（只回傳這份 Markdown，不要加任何說明文字或程式碼框）：
@@ -33,7 +72,7 @@ prompt = """你是「產業脈動追蹤網站」(tech-pulse) 的每日內容產�
 title: "<依當日主題下的標題>"
 date: {today}T09:00:00+08:00
 description: "<30秒重點摘要，40字以內>"
-tags: ["<從 physical-ai / generative-ai / ai-agent / ai-policy 挑1-2個，再加1-2個更具體的關鍵字如公司名或技術名詞>"]
+tags: ["<從 physical-ai / generative-ai / ai-agent / ai-policy 挑1-2個，再加1-2個更具體的關鍵字如公司名或技術名詞，全部使用英文小寫、多字詞用連字號連接，例如 unitree、fcc、ai-chip>"]
 glossary_term: "<這篇最主要挑的名詞小教室用詞，沒有適合的則留空字串>"
 draft: false
 ---
@@ -70,7 +109,7 @@ draft: false
 ---
 
 > 這份快報由 AI 根據上方引用來源整理，每日 08:00 自動發佈。
-""".format(today=today)
+""".format(today=today, avoid_note=avoid_note)
 
 with client.messages.stream(
     model="claude-sonnet-5",
@@ -79,15 +118,15 @@ with client.messages.stream(
     messages=[{"role": "user", "content": prompt}],
 ) as stream:
     for event in stream:
-        pass  # 不需要即時顯示內容，等串流跑完直接取得完整結果
+        pass
     response = stream.get_final_message()
 
 print(f"stop_reason: {response.stop_reason}")
+print(f"content block types: {[block.type for block in response.content]}")
 
 if response.stop_reason == "max_tokens":
     print("錯誤：回應在 max_tokens 被截斷，內容不完整，不寫入檔案")
     sys.exit(1)
-print(f"content block types: {[block.type for block in response.content]}")
 
 content_blocks = response.content
 last_non_text_idx = -1
@@ -95,22 +134,30 @@ for i, block in enumerate(content_blocks):
     if block.type != "text":
         last_non_text_idx = i
 
-# 只取最後一段連續的文字內容（真正的文章本體），排除中途夾帶的旁白句子
 text_blocks = [block.text for block in content_blocks[last_non_text_idx + 1:] if block.type == "text"]
 markdown = "\n".join(text_blocks).strip()
 markdown = re.sub(r"^```[a-zA-Z]*\n|```$", "", markdown).strip()
 
-# 保險機制：就算旁白混進了最終文字區塊裡，也強制從第一個 --- 開始截取
 match = re.search(r"^---", markdown, re.MULTILINE)
 if match:
     markdown = markdown[match.start():]
 
-converter = opencc.OpenCC('s2twp')  # 簡體轉台灣繁體，含用詞轉換
+converter = opencc.OpenCC('s2twp')
 markdown = converter.convert(markdown)
 
 if not markdown:
     print("錯誤：沒有抓到任何文字內容，不寫入檔案")
     sys.exit(1)
+
+section_match = re.search(r"## 今日 GitHub Trend\n(.*?)(?=\n## |\Z)", markdown, re.DOTALL)
+if section_match:
+    trend_section = section_match.group(1)
+    mentioned_repos = sorted(set(re.findall(r"github\.com/([\w.\-]+/[\w.\-]+)", trend_section)))
+    if mentioned_repos:
+        append_trend_repos(mentioned_repos)
+        print(f"記錄本次 GitHub Trend 選中：{', '.join(mentioned_repos)}")
+else:
+    print("警告：找不到「今日 GitHub Trend」段落，本次未更新歷史紀錄")
 
 filename = f"content/posts/{today}-daily-digest.md"
 with open(filename, "w", encoding="utf-8") as f:
