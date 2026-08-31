@@ -3,6 +3,7 @@ locale = 'zh-tw'
 title = 'Tech Pulse 產業脈動快報'
 theme = 'PaperMod'
 hasCJKLanguage = true
+buildFuture = true
 
 [taxonomies]
   tag = 'tags'

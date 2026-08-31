@@ -45,6 +45,18 @@ glossary_term: string   # 這篇挑的名詞小教室用詞，沒有則留空
 
 文章樣板存放於 `archetypes/posts.md`，執行 `hugo new posts/xxx.md` 會自動帶出上述五段落骨架與對應 front matter。
 
+## 編輯觀點寫作風格
+
+「編輯觀點」段落的第一人稱寫作風格規則，完整版見 Claude.ai「Physical AI 學習計畫」project 的《ABow_Chen 個人編輯觀點寫作風格指南》v1.0，`scripts/generate_post.py` 的 prompt 內已內嵌精簡實作版本。核心原則：口語化、比喻不堆疊（每段最多一個）、禁止捏造使用者本人未曾說過的具體親身經歷、長短句混搭、避免自我肯定式俏皮轉折、避免PTT/網誌腔。
+
+## 新聞主題與 GitHub Trend 去重複機制
+
+`scripts/topic_history.json`（近4天內出現過的新聞主題公司/關鍵字）與 `scripts/github_trend_history.json`（近14天內選過的開源專案），由 `generate_post.py` 自動讀寫，每次生成前提醒模型避免不必要的重複。這兩個檔案需跟文章一起 commit（已在 `daily-post.yml` 的 git add 指令中包含）。
+
+## 已知限制：buildFuture
+
+`hugo.toml` 已開啟 `buildFuture = true`，因為自動化 build 時間點早於文章標記的 09:00 發布時間，若移除此設定，每天最新文章會延遲一天才顯示。
+
 ## 全站連結設定
 
 `layouts/_default/_markup/render-link.html` 已設定全站連結自動加上 `target="_blank" rel="noopener noreferrer"`，來源連結會自動開新分頁，內文撰寫時不需額外加 HTML 標籤。
