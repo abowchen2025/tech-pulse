@@ -4,5 +4,11 @@
     "items": [
       "deepseek-ai/deepseek-harness"
     ]
+  },
+  {
+    "date": "2026-09-02",
+    "items": [
+      "pollen-robotics/microduck"
+    ]
   }
 ]
