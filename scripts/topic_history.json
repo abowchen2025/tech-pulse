@@ -19,5 +19,12 @@
       "nvidia",
       "eu-ai-act"
     ]
+  },
+  {
+    "date": "2026-09-04",
+    "items": [
+      "openai",
+      "cisco"
+    ]
   }
 ]
