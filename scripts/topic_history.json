@@ -26,5 +26,11 @@
       "openai",
       "cisco"
     ]
+  },
+  {
+    "date": "2026-09-05",
+    "items": [
+      "ai-chip"
+    ]
   }
 ]
