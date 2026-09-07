@@ -120,3 +120,28 @@
   flex-wrap: wrap;
   align-items: center;
 }
+
+:root {
+  --primary: #0ea5b8;
+}
+[data-theme="dark"] {
+  --primary: #22d3ee;
+}
+
+.post-meta, .tag-chip, .post-tags a {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.02em;
+}
+
+.entry-date-badge {
+  border: 1px solid var(--primary);
+  background: color-mix(in srgb, var(--primary) 10%, var(--entry) 90%);
+}
+.entry-date-badge .badge-day {
+  color: var(--primary);
+}
+
+.post-entry:hover,
+.post-related-list li:hover {
+  box-shadow: 0 0 0 1px var(--primary), 0 4px 20px color-mix(in srgb, var(--primary) 25%, transparent);
+}
