@@ -64,5 +64,12 @@
       "tesla-optimus",
       "gpt-6"
     ]
+  },
+  {
+    "date": "2026-09-11",
+    "items": [
+      "ai-inference-chip",
+      "crowdstrike"
+    ]
   }
 ]
