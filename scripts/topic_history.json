@@ -71,5 +71,12 @@
       "ai-inference-chip",
       "crowdstrike"
     ]
+  },
+  {
+    "date": "2026-09-12",
+    "items": [
+      "mistral",
+      "sovereign-ai"
+    ]
   }
 ]
