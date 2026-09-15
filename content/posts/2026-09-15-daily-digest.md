@@ -14,10 +14,7 @@ draft: false
 - GitHub上人形手臂開源專案enactic/openarm近期持續有新版本釋出，星數較去年成長逾一倍
 
 ## Meta、OpenAI、Salesforce同天出手，AI Agent要進入你的手機了嗎？
-上週五（2026.09.11）這天，三家科技巨頭幾乎同時公佈了各自的AI代理新動作。
-Meta launched Muse, a personal AI agent designed to perform tasks across applications, including messaging and purchasing, while also emphasizing user privacy through a secure virtual machine system。
-同一天，
-OpenAI continued to advance its agent offerings with the public beta launch of its Agents API, simplifying the development of long-running AI agents for enterprises。
+上週五（2026.09.11）這天，三家科技巨頭幾乎同時公佈了各自的AI代理新動作。Meta 推出了個人 AI 代理 Muse，能跨應用程式執行任務，包含訊息傳送與購物，並透過安全虛擬機系統強調使用者隱私保護。同一天，OpenAI 也持續推進其代理產品線，公開測試版推出 Agents API，簡化企業開發長時間運作 AI 代理的流程。
 
 
 企業端的動作也沒閒著。
