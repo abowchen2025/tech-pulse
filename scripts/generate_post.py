@@ -21,6 +21,10 @@ TOPIC_DISPLAY_DAYS = 4
 TOPIC_KEEP_DAYS = 14
 FIXED_CATEGORY_TAGS = {"physical-ai", "generative-ai", "ai-agent", "ai-policy"}
 
+# 偵測長段未翻譯英文句子（連續60字元以上的英文並以句號/驚嘆號/問號收尾），
+# 短的專有名詞、產品名稱（如 OpenAI、Agents API）不會誤判，因為長度不夠
+UNTRANSLATED_ENGLISH_PATTERN = re.compile(r'[A-Za-z][A-Za-z0-9\s,\'"-]{60,}[.!?]')
+
 
 def load_recent(history_file, days):
     if not history_file.exists():
@@ -83,7 +87,7 @@ prompt = """你是「產業脈動追蹤網站」(tech-pulse) 的每日內容產�
 另外搜尋今天實際的 GitHub Trending 頁面（https://github.com/trending，可加上 since=daily 或 since=weekly 參數），找1個真正當前上榜、跟以上四大主題相關的開源專案，找到明顯符合的就停止，不用比較多個候選。只需要用1次額外搜尋確認選中的專案「近期真的有新版本發布、功能更新、或star數在近期明顯增長」，不要重複查證。如果完全找不到任何真正當前上榜且相關的專案，這個段落可以整段省略，不要為了湊數勉強放進不符合條件的專案。{trend_avoid_note}
 
 【第二步：整理成文章】
-從第一步蒐集到的候選新聞中，只挑出全部類別加總後最重要的2-3則，實際寫成獨立段落——不用把每個找到的候選都寫進文章，只寫真正最值得關注的2-3則。用繁體中文台灣用語，整理成一篇 Markdown 文章，格式如下（只回傳這份 Markdown，不要加任何說明文字或程式碼框）：
+從第一步蒐集到的候選新聞中，只挑出全部類別加總後最重要的2-3則，實際寫成獨立段落——不用把每個找到的候選都寫進文章，只寫真正最值得關注的2-3則。全文必須用繁體中文台灣用語撰寫，即使引用的新聞來源是英文報導，也必須完整翻譯、改寫成通順的中文，絕對不可以保留任何未翻譯的英文句子或段落直接混雜在中文內文中——單獨的專有名詞、產品名稱、公司名稱可以維持英文原文（例如 OpenAI、Agents API），但完整的英文句子一律要翻譯成中文，這是硬性規則。格式如下（只回傳這份 Markdown，不要加任何說明文字或程式碼框）：
 
 ---
 title: "<依當日主題下的標題>"
@@ -173,6 +177,11 @@ markdown = converter.convert(markdown)
 
 if not markdown:
     print("錯誤：沒有抓到任何文字內容，不寫入檔案")
+    sys.exit(1)
+
+english_match = UNTRANSLATED_ENGLISH_PATTERN.search(markdown)
+if english_match:
+    print(f"錯誤：偵測到疑似未翻譯的英文句子，內容品質不合格，不寫入檔案。片段：{english_match.group()[:80]}")
     sys.exit(1)
 
 trend_match = re.search(r"## 今日 GitHub Trend\n(.*?)(?=\n## |\Z)", markdown, re.DOTALL)
