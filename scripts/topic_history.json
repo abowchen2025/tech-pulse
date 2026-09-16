@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-01",
-    "items": [
-      "unitree",
-      "fcc"
-    ]
-  },
-  {
     "date": "2026-09-02",
     "items": [
       "anthropic",
@@ -98,6 +91,13 @@
     "items": [
       "openai",
       "anthropic"
+    ]
+  },
+  {
+    "date": "2026-09-16",
+    "items": [
+      "chip-export-control",
+      "cisco"
     ]
   }
 ]
