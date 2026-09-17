@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-02",
-    "items": [
-      "anthropic",
-      "humanoid-robot"
-    ]
-  },
-  {
     "date": "2026-09-03",
     "items": [
       "nvidia",
@@ -98,6 +91,13 @@
     "items": [
       "chip-export-control",
       "cisco"
+    ]
+  },
+  {
+    "date": "2026-09-17",
+    "items": [
+      "universal-robots",
+      "biren-technology"
     ]
   }
 ]
