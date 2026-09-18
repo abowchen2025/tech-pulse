@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-03",
-    "items": [
-      "nvidia",
-      "eu-ai-act"
-    ]
-  },
-  {
     "date": "2026-09-04",
     "items": [
       "openai",
@@ -98,6 +91,13 @@
     "items": [
       "universal-robots",
       "biren-technology"
+    ]
+  },
+  {
+    "date": "2026-09-18",
+    "items": [
+      "zhipu-ai",
+      "ai-chip"
     ]
   }
 ]

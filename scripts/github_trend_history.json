@@ -46,5 +46,11 @@
     "items": [
       "JustVugg/colibri"
     ]
+  },
+  {
+    "date": "2026-09-18",
+    "items": [
+      "roboflow/supervision"
+    ]
   }
 ]
