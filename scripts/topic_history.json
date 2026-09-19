@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-04",
-    "items": [
-      "openai",
-      "cisco"
-    ]
-  },
-  {
     "date": "2026-09-05",
     "items": [
       "ai-chip"
@@ -98,6 +91,14 @@
     "items": [
       "zhipu-ai",
       "ai-chip"
+    ]
+  },
+  {
+    "date": "2026-09-19",
+    "items": [
+      "ugo",
+      "axelera-ai",
+      "california-ai-regulation"
     ]
   }
 ]
