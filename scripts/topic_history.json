@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-05",
-    "items": [
-      "ai-chip"
-    ]
-  },
-  {
     "date": "2026-09-06",
     "items": [
       "ai-safety"
@@ -99,6 +93,13 @@
       "ugo",
       "axelera-ai",
       "california-ai-regulation"
+    ]
+  },
+  {
+    "date": "2026-09-20",
+    "items": [
+      "agility-robotics",
+      "nvidia"
     ]
   }
 ]
