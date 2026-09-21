@@ -52,5 +52,11 @@
     "items": [
       "roboflow/supervision"
     ]
+  },
+  {
+    "date": "2026-09-21",
+    "items": [
+      "deepseek-ai/deepseek-harness"
+    ]
   }
 ]

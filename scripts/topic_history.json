@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-06",
-    "items": [
-      "ai-safety"
-    ]
-  },
-  {
     "date": "2026-09-07",
     "items": [
       "unitree"
@@ -100,6 +94,13 @@
     "items": [
       "agility-robotics",
       "nvidia"
+    ]
+  },
+  {
+    "date": "2026-09-21",
+    "items": [
+      "openai",
+      "humanoid-robot"
     ]
   }
 ]
