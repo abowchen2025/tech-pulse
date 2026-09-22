@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-07",
-    "items": [
-      "unitree"
-    ]
-  },
-  {
     "date": "2026-09-08",
     "items": [
       "figure-ai"
@@ -101,6 +95,13 @@
     "items": [
       "openai",
       "humanoid-robot"
+    ]
+  },
+  {
+    "date": "2026-09-22",
+    "items": [
+      "daxai-robotics",
+      "china-ai-regulation"
     ]
   }
 ]
