@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-11",
-    "items": [
-      "ai-inference-chip",
-      "crowdstrike"
-    ]
-  },
-  {
     "date": "2026-09-12",
     "items": [
       "mistral",
@@ -101,6 +94,13 @@
     "items": [
       "nvidia",
       "anthropic"
+    ]
+  },
+  {
+    "date": "2026-09-26",
+    "items": [
+      "openai",
+      "sb1047"
     ]
   }
 ]
