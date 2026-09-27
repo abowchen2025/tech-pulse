@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-12",
-    "items": [
-      "mistral",
-      "sovereign-ai"
-    ]
-  },
-  {
     "date": "2026-09-13",
     "items": [
       "ubtech",
@@ -101,6 +94,12 @@
     "items": [
       "openai",
       "sb1047"
+    ]
+  },
+  {
+    "date": "2026-09-27",
+    "items": [
+      "agility-robotics"
     ]
   }
 ]
