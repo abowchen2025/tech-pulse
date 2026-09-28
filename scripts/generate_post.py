@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import json
+import difflib
 from pathlib import Path
 from datetime import datetime, timezone, timedelta, date
 import anthropic
@@ -34,6 +35,11 @@ REUSE_RAW = os.environ.get("REUSE_RAW") == "1"
 UNTRANSLATED_ENGLISH_PATTERN = re.compile(r'[A-Za-z][A-Za-z0-9\s,\'"-]{60,}[.!?]')
 MAX_REPAIR_ATTEMPTS = 2
 URL_PATTERN = re.compile(r"https?://[^\s)\]]+")
+
+# 模型輸出偶發的亂碼字元（U+FFFD），可能出現在任何段落
+GARBLED_CHAR = "\ufffd"
+# 只有亂碼、沒有英文的行，修復後與原文相似度需達此門檻，避免模型順手改寫整行
+GARBLED_ONLY_MIN_SIMILARITY = 0.9
 
 converter = opencc.OpenCC('s2twp')
 
@@ -79,27 +85,41 @@ def strip_links(line):
     return line
 
 
-def english_hits(md):
-    """回傳 [(行號, 英文片段)]；來源連結區塊整段略過"""
-    hits = []
+def find_problem_lines(md):
+    """回傳 [(行號, {"english": 英文片段或None, "garbled": 是否含亂碼})]
+    英文檢查會略過來源連結區塊；亂碼檢查則涵蓋全文（含來源區塊與 front matter）"""
+    problems = {}
     in_sources = False
     for i, line in enumerate(md.split("\n")):
         if line.startswith("## "):
             in_sources = line.strip() == "## 來源連結"
-        if in_sources:
-            continue
-        m = UNTRANSLATED_ENGLISH_PATTERN.search(strip_links(line))
-        if m:
-            hits.append((i, m.group()))
-    return hits
+        info = {"english": None, "garbled": GARBLED_CHAR in line}
+        if not in_sources:
+            m = UNTRANSLATED_ENGLISH_PATTERN.search(strip_links(line))
+            if m:
+                info["english"] = m.group()
+        if info["english"] or info["garbled"]:
+            problems[i] = info
+    return sorted(problems.items())
 
 
-def repair_english_lines(md, hits):
-    """只把含英文的那幾行送去翻譯（成本約為整篇修復的十分之一以下），其餘內容完全不動"""
+def repair_problem_lines(md, problems):
+    """只把有問題的那幾行送去修復（成本遠低於整篇重跑），其餘內容完全不動"""
     lines = md.split("\n")
-    targets = [i for i, _ in hits]
-    payload = [{"id": n, "text": lines[i]} for n, i in enumerate(targets)]
-    repair_prompt = """以下 JSON 陣列的每個項目是文章中的一行 Markdown，其中夾雜了未翻譯的英文句子。請只把英文句子翻成通順的繁體中文（台灣用語），其餘內容（已是中文的部分、Markdown 符號、連結文字與網址、專有名詞與產品名稱）一字不改。請只回傳 JSON 陣列，格式與輸入相同（每項包含 id 與 text），不要加任何說明文字或程式碼框。
+    targets = [i for i, _ in problems]
+    payload = []
+    for n, (i, info) in enumerate(problems):
+        issues = []
+        if info["english"]:
+            issues.append("english")
+        if info["garbled"]:
+            issues.append("garbled")
+        payload.append({"id": n, "issues": issues, "text": lines[i]})
+
+    repair_prompt = """以下 JSON 陣列的每個項目是文章中的一行 Markdown，issues 欄位標示該行的問題：
+- english：夾雜未翻譯的英文句子。請把英文句子翻成通順的繁體中文（台灣用語）。
+- garbled：含有亂碼字元「\ufffd」。請依上下文推斷原本應該是哪個字並還原；該字可能是被取代，也可能是多出來的，若判斷是多出來的請直接刪除。不要改寫其他任何字。
+其餘內容（已是中文的部分、Markdown 符號、連結文字與網址、專有名詞與產品名稱）一字不改。請只回傳 JSON 陣列（每項包含 id 與 text，不需要 issues），不要加任何說明文字或程式碼框。
 
 {payload}""".format(payload=json.dumps(payload, ensure_ascii=False))
 
@@ -117,13 +137,21 @@ def repair_english_lines(md, hits):
         return md, 0
 
     changed = 0
-    for n, i in enumerate(targets):
+    for n, (i, info) in enumerate(problems):
         new_line = fixed.get(n)
         if not new_line or new_line == lines[i]:
+            continue
+        if GARBLED_CHAR in new_line:
+            print(f"略過第 {i + 1} 行：修復後仍含亂碼字元")
             continue
         if sorted(URL_PATTERN.findall(new_line)) != sorted(URL_PATTERN.findall(lines[i])):
             print(f"略過第 {i + 1} 行：修復後網址與原文不一致")
             continue
+        if info["garbled"] and not info["english"]:
+            ratio = difflib.SequenceMatcher(None, lines[i], new_line).ratio()
+            if ratio < GARBLED_ONLY_MIN_SIMILARITY:
+                print(f"略過第 {i + 1} 行：僅需還原亂碼字元，但修復後改動過大（相似度 {ratio:.2f}）")
+                continue
         lines[i] = converter.convert(new_line)
         changed += 1
     return "\n".join(lines), changed
@@ -276,23 +304,35 @@ def main():
         print("錯誤：沒有抓到任何文字內容，不寫入檔案")
         sys.exit(1)
 
-    # 偵測到未翻譯英文時，只把含英文的那幾行送去翻譯，不重跑整個流程
+    # 偵測到未翻譯英文或亂碼字元時，只把有問題的那幾行送去修復，不重跑整個流程
     for attempt in range(1, MAX_REPAIR_ATTEMPTS + 1):
-        hits = english_hits(markdown)
-        if not hits:
+        problems = find_problem_lines(markdown)
+        if not problems:
             break
-        print(f"偵測到 {len(hits)} 行含未翻譯英文，進行第 {attempt} 次修復")
-        for i, s in hits:
-            print(f"  - 第 {i + 1} 行：{s[:80]}")
-        markdown, changed = repair_english_lines(markdown, hits)
+        print(f"偵測到 {len(problems)} 行有問題，進行第 {attempt} 次修復")
+        for i, info in problems:
+            detail = []
+            if info["english"]:
+                detail.append("未翻譯英文：" + info["english"][:60])
+            if info["garbled"]:
+                detail.append("含亂碼字元")
+            print(f"  - 第 {i + 1} 行：{'；'.join(detail)}")
+        markdown, changed = repair_problem_lines(markdown, problems)
         if changed == 0:
             print("修復沒有任何變更，停止重試")
             break
 
-    remaining = english_hits(markdown)
-    if remaining:
-        print(f"錯誤：修復後仍偵測到未翻譯英文，不寫入檔案。第 {remaining[0][0] + 1} 行：{remaining[0][1][:80]}")
+    remaining_english = [(i, info) for i, info in find_problem_lines(markdown) if info["english"]]
+    if remaining_english:
+        i, info = remaining_english[0]
+        print(f"錯誤：修復後仍偵測到未翻譯英文，不寫入檔案。第 {i + 1} 行：{info['english'][:80]}")
         sys.exit(1)
+
+    # 亂碼無法自動還原時不擋下文章，移除該字元並在 Actions 摘要留下警告，提醒人工確認
+    if GARBLED_CHAR in markdown:
+        count = markdown.count(GARBLED_CHAR)
+        markdown = markdown.replace(GARBLED_CHAR, "")
+        print(f"::warning::仍有 {count} 個亂碼字元無法自動還原，已移除，請人工確認文章內容")
 
     trend_match = re.search(r"## 今日 GitHub Trend\n(.*?)(?=\n## |\Z)", markdown, re.DOTALL)
     if trend_match:
