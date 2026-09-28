@@ -76,5 +76,11 @@
     "items": [
       "google/ax"
     ]
+  },
+  {
+    "date": "2026-09-28",
+    "items": [
+      "dora-rs/dora"
+    ]
   }
 ]
