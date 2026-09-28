@@ -1,85 +1,5 @@
 [
   {
-    "date": "2026-09-01",
-    "items": [
-      "unitree",
-      "fcc"
-    ]
-  },
-  {
-    "date": "2026-09-02",
-    "items": [
-      "anthropic",
-      "humanoid-robot"
-    ]
-  },
-  {
-    "date": "2026-09-03",
-    "items": [
-      "nvidia",
-      "eu-ai-act"
-    ]
-  },
-  {
-    "date": "2026-09-04",
-    "items": [
-      "openai",
-      "cisco"
-    ]
-  },
-  {
-    "date": "2026-09-05",
-    "items": [
-      "ai-chip"
-    ]
-  },
-  {
-    "date": "2026-09-06",
-    "items": [
-      "ai-safety"
-    ]
-  },
-  {
-    "date": "2026-09-07",
-    "items": [
-      "unitree"
-    ]
-  },
-  {
-    "date": "2026-09-08",
-    "items": [
-      "figure-ai"
-    ]
-  },
-  {
-    "date": "2026-09-09",
-    "items": [
-      "us-china",
-      "enterprise-ai"
-    ]
-  },
-  {
-    "date": "2026-09-10",
-    "items": [
-      "tesla-optimus",
-      "gpt-6"
-    ]
-  },
-  {
-    "date": "2026-09-11",
-    "items": [
-      "ai-inference-chip",
-      "crowdstrike"
-    ]
-  },
-  {
-    "date": "2026-09-12",
-    "items": [
-      "mistral",
-      "sovereign-ai"
-    ]
-  },
-  {
     "date": "2026-09-13",
     "items": [
       "ubtech",
@@ -98,6 +18,88 @@
     "items": [
       "openai",
       "anthropic"
+    ]
+  },
+  {
+    "date": "2026-09-16",
+    "items": [
+      "chip-export-control",
+      "cisco"
+    ]
+  },
+  {
+    "date": "2026-09-17",
+    "items": [
+      "universal-robots",
+      "biren-technology"
+    ]
+  },
+  {
+    "date": "2026-09-18",
+    "items": [
+      "zhipu-ai",
+      "ai-chip"
+    ]
+  },
+  {
+    "date": "2026-09-19",
+    "items": [
+      "ugo",
+      "axelera-ai",
+      "california-ai-regulation"
+    ]
+  },
+  {
+    "date": "2026-09-20",
+    "items": [
+      "agility-robotics",
+      "nvidia"
+    ]
+  },
+  {
+    "date": "2026-09-21",
+    "items": [
+      "openai",
+      "humanoid-robot"
+    ]
+  },
+  {
+    "date": "2026-09-22",
+    "items": [
+      "daxai-robotics",
+      "china-ai-regulation"
+    ]
+  },
+  {
+    "date": "2026-09-23",
+    "items": [
+      "grok"
+    ]
+  },
+  {
+    "date": "2026-09-24",
+    "items": [
+      "alibaba"
+    ]
+  },
+  {
+    "date": "2026-09-25",
+    "items": [
+      "nvidia",
+      "anthropic"
+    ]
+  },
+  {
+    "date": "2026-09-26",
+    "items": [
+      "openai",
+      "sb1047"
+    ]
+  },
+  {
+    "date": "2026-09-27",
+    "items": [
+      "agility-robotics"
     ]
   }
 ]
