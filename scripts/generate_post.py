@@ -59,6 +59,12 @@ def extract_markdown(response):
         text = text[m.start():]
     return text
 
+def strip_for_english_check(md):
+    # 排除來源連結區塊、markdown 連結（含英文標題）與網址，只檢查正文
+    text = re.sub(r"## 來源連結.*?(?=\n---\s*\n|\Z)", "", md, flags=re.DOTALL)
+    text = re.sub(r"\[[^\]]*\]\([^)]*\)", "", text)
+    text = re.sub(r"https?://\S+", "", text)
+    return text
 
 def load_recent(history_file, days):
     if not history_file.exists():
@@ -193,7 +199,7 @@ if not markdown:
 
 # 偵測到未翻譯英文時，不重跑整個流程，改用不帶搜尋工具的小型呼叫只翻譯英文句子
 for attempt in range(1, MAX_REPAIR_ATTEMPTS + 1):
-    english_matches = [m.group() for m in UNTRANSLATED_ENGLISH_PATTERN.finditer(markdown)]
+    english_matches = [m.group() for m in UNTRANSLATED_ENGLISH_PATTERN.finditer(strip_for_english_check(markdown))]
     if not english_matches:
         break
 
@@ -229,7 +235,7 @@ for attempt in range(1, MAX_REPAIR_ATTEMPTS + 1):
 
     markdown = repaired
 
-remaining = UNTRANSLATED_ENGLISH_PATTERN.search(markdown)
+remaining = UNTRANSLATED_ENGLISH_PATTERN.search(strip_for_english_check(markdown))
 if remaining:
     print(f"錯誤：修復後仍偵測到未翻譯英文句子，不寫入檔案。片段：{remaining.group()[:80]}")
     sys.exit(1)
