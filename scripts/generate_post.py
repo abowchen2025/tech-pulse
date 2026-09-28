@@ -9,6 +9,8 @@ import opencc
 
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
+MODEL = "claude-sonnet-5"
+
 today = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d")
 today_date = date.fromisoformat(today)
 
@@ -24,6 +26,38 @@ FIXED_CATEGORY_TAGS = {"physical-ai", "generative-ai", "ai-agent", "ai-policy"}
 # 偵測長段未翻譯英文句子（連續60字元以上的英文並以句號/驚嘆號/問號收尾），
 # 短的專有名詞、產品名稱（如 OpenAI、Agents API）不會誤判，因為長度不夠
 UNTRANSLATED_ENGLISH_PATTERN = re.compile(r'[A-Za-z][A-Za-z0-9\s,\'"-]{60,}[.!?]')
+MAX_REPAIR_ATTEMPTS = 2
+MIN_REPAIR_LENGTH_RATIO = 0.8
+
+converter = opencc.OpenCC('s2twp')
+
+
+def run_model(user_prompt, max_tokens, use_search=False):
+    kwargs = dict(
+        model=MODEL,
+        max_tokens=max_tokens,
+        messages=[{"role": "user", "content": user_prompt}],
+    )
+    if use_search:
+        kwargs["tools"] = [{"type": "web_search_20250305", "name": "web_search"}]
+    with client.messages.stream(**kwargs) as stream:
+        for event in stream:
+            pass
+        return stream.get_final_message()
+
+
+def extract_markdown(response):
+    blocks = response.content
+    last_non_text_idx = -1
+    for i, block in enumerate(blocks):
+        if block.type != "text":
+            last_non_text_idx = i
+    text = "\n".join(b.text for b in blocks[last_non_text_idx + 1:] if b.type == "text").strip()
+    text = re.sub(r"^```[a-zA-Z]*\n|```$", "", text).strip()
+    m = re.search(r"^---", text, re.MULTILINE)
+    if m:
+        text = text[m.start():]
+    return text
 
 
 def load_recent(history_file, days):
@@ -141,47 +175,63 @@ draft: false
 > 這份快報由 AI 根據上方引用來源整理，每日 08:00 自動發佈。
 """.format(today=today, topic_avoid_note=topic_avoid_note, trend_avoid_note=trend_avoid_note)
 
-with client.messages.stream(
-    model="claude-sonnet-5",
-    max_tokens=24000,
-    tools=[{"type": "web_search_20250305", "name": "web_search"}],
-    messages=[{"role": "user", "content": prompt}],
-) as stream:
-    for event in stream:
-        pass
-    response = stream.get_final_message()
+response = run_model(prompt, 24000, use_search=True)
 
 print(f"stop_reason: {response.stop_reason}")
+print(f"usage: {response.usage}")
 print(f"content block types: {[block.type for block in response.content]}")
 
 if response.stop_reason == "max_tokens":
     print("錯誤：回應在 max_tokens 被截斷，內容不完整，不寫入檔案")
     sys.exit(1)
 
-content_blocks = response.content
-last_non_text_idx = -1
-for i, block in enumerate(content_blocks):
-    if block.type != "text":
-        last_non_text_idx = i
-
-text_blocks = [block.text for block in content_blocks[last_non_text_idx + 1:] if block.type == "text"]
-markdown = "\n".join(text_blocks).strip()
-markdown = re.sub(r"^```[a-zA-Z]*\n|```$", "", markdown).strip()
-
-match = re.search(r"^---", markdown, re.MULTILINE)
-if match:
-    markdown = markdown[match.start():]
-
-converter = opencc.OpenCC('s2twp')
-markdown = converter.convert(markdown)
+markdown = converter.convert(extract_markdown(response))
 
 if not markdown:
     print("錯誤：沒有抓到任何文字內容，不寫入檔案")
     sys.exit(1)
 
-english_match = UNTRANSLATED_ENGLISH_PATTERN.search(markdown)
-if english_match:
-    print(f"錯誤：偵測到疑似未翻譯的英文句子，內容品質不合格，不寫入檔案。片段：{english_match.group()[:80]}")
+# 偵測到未翻譯英文時，不重跑整個流程，改用不帶搜尋工具的小型呼叫只翻譯英文句子
+for attempt in range(1, MAX_REPAIR_ATTEMPTS + 1):
+    english_matches = [m.group() for m in UNTRANSLATED_ENGLISH_PATTERN.finditer(markdown)]
+    if not english_matches:
+        break
+
+    print(f"偵測到 {len(english_matches)} 處未翻譯英文句子，進行第 {attempt} 次修復")
+    for s in english_matches:
+        print(f"  - {s[:80]}")
+
+    hints = "\n".join(f"- {s[:100]}" for s in english_matches)
+    repair_prompt = """以下是一篇 Markdown 文章，內文中夾雜了未翻譯的英文句子。請只把這些英文句子翻譯成通順的繁體中文（台灣用語），其餘內容一字不改：front matter、標題、已經是中文的句子、連結文字與網址、專有名詞與產品名稱都要維持原樣。請原樣回傳完整的 Markdown（從 --- 開頭的 front matter 開始），不要加任何說明文字或程式碼框。
+
+偵測到的未翻譯英文句子（開頭片段，僅供定位）：
+{hints}
+
+文章內容：
+{article}""".format(hints=hints, article=markdown)
+
+    repair_response = run_model(repair_prompt, 16000)
+    print(f"repair usage: {repair_response.usage}")
+
+    if repair_response.stop_reason == "max_tokens":
+        print("錯誤：修復回應被截斷，不寫入檔案")
+        sys.exit(1)
+
+    repaired = converter.convert(extract_markdown(repair_response))
+
+    if not repaired.startswith("---"):
+        print("錯誤：修復後內容缺少 front matter，不寫入檔案")
+        sys.exit(1)
+
+    if len(repaired) < len(markdown) * MIN_REPAIR_LENGTH_RATIO:
+        print(f"錯誤：修復後內容長度異常縮短（{len(markdown)} → {len(repaired)}），疑似內容被刪減，不寫入檔案")
+        sys.exit(1)
+
+    markdown = repaired
+
+remaining = UNTRANSLATED_ENGLISH_PATTERN.search(markdown)
+if remaining:
+    print(f"錯誤：修復後仍偵測到未翻譯英文句子，不寫入檔案。片段：{remaining.group()[:80]}")
     sys.exit(1)
 
 trend_match = re.search(r"## 今日 GitHub Trend\n(.*?)(?=\n## |\Z)", markdown, re.DOTALL)
