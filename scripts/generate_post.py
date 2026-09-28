@@ -23,11 +23,17 @@ TOPIC_DISPLAY_DAYS = 4
 TOPIC_KEEP_DAYS = 14
 FIXED_CATEGORY_TAGS = {"physical-ai", "generative-ai", "ai-agent", "ai-policy"}
 
+# 原始輸出保存位置：主流程呼叫 API 成功後立刻存檔，
+# 後續任何檢查或程式失敗，都可以沿用這份輸出重跑，不必再付一次 API 費用
+RAW_DIR = Path("raw_output")
+RAW_FILE = RAW_DIR / "raw.md"
+REUSE_RAW = os.environ.get("REUSE_RAW") == "1"
+
 # 偵測長段未翻譯英文句子（連續60字元以上的英文並以句號/驚嘆號/問號收尾），
 # 短的專有名詞、產品名稱（如 OpenAI、Agents API）不會誤判，因為長度不夠
 UNTRANSLATED_ENGLISH_PATTERN = re.compile(r'[A-Za-z][A-Za-z0-9\s,\'"-]{60,}[.!?]')
 MAX_REPAIR_ATTEMPTS = 2
-MIN_REPAIR_LENGTH_RATIO = 0.8
+URL_PATTERN = re.compile(r"https?://[^\s)\]]+")
 
 converter = opencc.OpenCC('s2twp')
 
@@ -59,12 +65,69 @@ def extract_markdown(response):
         text = text[m.start():]
     return text
 
-def strip_for_english_check(md):
-    # 排除來源連結區塊、markdown 連結（含英文標題）與網址，只檢查正文
-    text = re.sub(r"## 來源連結.*?(?=\n---\s*\n|\Z)", "", md, flags=re.DOTALL)
-    text = re.sub(r"\[[^\]]*\]\([^)]*\)", "", text)
-    text = re.sub(r"https?://\S+", "", text)
+
+def get_text(response):
+    text = "".join(b.text for b in response.content if b.type == "text").strip()
+    text = re.sub(r"^```[a-zA-Z]*\s*|\s*```$", "", text).strip()
     return text
+
+
+def strip_links(line):
+    # 排除 markdown 連結（含英文標題）與網址，只檢查正文
+    line = re.sub(r"\[[^\]]*\]\([^)]*\)", "", line)
+    line = re.sub(r"https?://\S+", "", line)
+    return line
+
+
+def english_hits(md):
+    """回傳 [(行號, 英文片段)]；來源連結區塊整段略過"""
+    hits = []
+    in_sources = False
+    for i, line in enumerate(md.split("\n")):
+        if line.startswith("## "):
+            in_sources = line.strip() == "## 來源連結"
+        if in_sources:
+            continue
+        m = UNTRANSLATED_ENGLISH_PATTERN.search(strip_links(line))
+        if m:
+            hits.append((i, m.group()))
+    return hits
+
+
+def repair_english_lines(md, hits):
+    """只把含英文的那幾行送去翻譯（成本約為整篇修復的十分之一以下），其餘內容完全不動"""
+    lines = md.split("\n")
+    targets = [i for i, _ in hits]
+    payload = [{"id": n, "text": lines[i]} for n, i in enumerate(targets)]
+    repair_prompt = """以下 JSON 陣列的每個項目是文章中的一行 Markdown，其中夾雜了未翻譯的英文句子。請只把英文句子翻成通順的繁體中文（台灣用語），其餘內容（已是中文的部分、Markdown 符號、連結文字與網址、專有名詞與產品名稱）一字不改。請只回傳 JSON 陣列，格式與輸入相同（每項包含 id 與 text），不要加任何說明文字或程式碼框。
+
+{payload}""".format(payload=json.dumps(payload, ensure_ascii=False))
+
+    resp = run_model(repair_prompt, 8000)
+    print(f"repair usage: {resp.usage}")
+    if resp.stop_reason == "max_tokens":
+        print("修復回應被截斷，略過本次修復")
+        return md, 0
+
+    try:
+        data = json.loads(get_text(resp))
+        fixed = {int(item["id"]): item["text"] for item in data}
+    except (ValueError, KeyError, TypeError) as e:
+        print(f"修復結果無法解析：{e}")
+        return md, 0
+
+    changed = 0
+    for n, i in enumerate(targets):
+        new_line = fixed.get(n)
+        if not new_line or new_line == lines[i]:
+            continue
+        if sorted(URL_PATTERN.findall(new_line)) != sorted(URL_PATTERN.findall(lines[i])):
+            print(f"略過第 {i + 1} 行：修復後網址與原文不一致")
+            continue
+        lines[i] = converter.convert(new_line)
+        changed += 1
+    return "\n".join(lines), changed
+
 
 def load_recent(history_file, days):
     if not history_file.exists():
@@ -92,21 +155,22 @@ def append_history(history_file, items, keep_days):
         json.dump(records, f, ensure_ascii=False, indent=2)
 
 
-recent_repos = load_recent(TREND_HISTORY_FILE, TREND_DISPLAY_DAYS)
-trend_avoid_note = ""
-if recent_repos:
-    trend_avoid_note = "過去 {} 天已經介紹過這些專案，這次不要重複選（除非有重大更新新聞，且需特別說明為何值得再次入選）：{}".format(
-        TREND_DISPLAY_DAYS, "、".join(recent_repos)
-    )
+def build_prompt():
+    recent_repos = load_recent(TREND_HISTORY_FILE, TREND_DISPLAY_DAYS)
+    trend_avoid_note = ""
+    if recent_repos:
+        trend_avoid_note = "過去 {} 天已經介紹過這些專案，這次不要重複選（除非有重大更新新聞，且需特別說明為何值得再次入選）：{}".format(
+            TREND_DISPLAY_DAYS, "、".join(recent_repos)
+        )
 
-recent_topics = load_recent(TOPIC_HISTORY_FILE, TOPIC_DISPLAY_DAYS)
-topic_avoid_note = ""
-if recent_topics:
-    topic_avoid_note = "以下公司/主題最近{}天已經是文章的新聞主角：{}。今天請優先選擇其他公司/主題作為新聞重點；如果這些公司/主題有重大新進展值得繼續追蹤，可以再次提及，但只能作為次要新聞角度帶過，並且必須明確說明「相較先前報導，這次新進展是什麼」，不能重複講已經講過的舊資訊。".format(
-        TOPIC_DISPLAY_DAYS, "、".join(recent_topics)
-    )
+    recent_topics = load_recent(TOPIC_HISTORY_FILE, TOPIC_DISPLAY_DAYS)
+    topic_avoid_note = ""
+    if recent_topics:
+        topic_avoid_note = "以下公司/主題最近{}天已經是文章的新聞主角：{}。今天請優先選擇其他公司/主題作為新聞重點；如果這些公司/主題有重大新進展值得繼續追蹤，可以再次提及，但只能作為次要新聞角度帶過，並且必須明確說明「相較先前報導，這次新進展是什麼」，不能重複講已經講過的舊資訊。".format(
+            TOPIC_DISPLAY_DAYS, "、".join(recent_topics)
+        )
 
-prompt = """你是「產業脈動追蹤網站」(tech-pulse) 的每日內容產生器。
+    return """你是「產業脈動追蹤網站」(tech-pulse) 的每日內容產生器。
 
 【成本控制原則，優先於其他所有指示】
 整個內容蒐集階段，搜尋次數合計請控制在8次以內。優先用較少但精準的搜尋涵蓋需求，可以合併關鍵字、一次搜尋涵蓋多個子主題，不需要每個子主題都個別搜尋一次，也不需要為了「確認得更完整」而重複搜尋類似的關鍵字。
@@ -181,86 +245,86 @@ draft: false
 > 這份快報由 AI 根據上方引用來源整理，每日 08:00 自動發佈。
 """.format(today=today, topic_avoid_note=topic_avoid_note, trend_avoid_note=trend_avoid_note)
 
-response = run_model(prompt, 24000, use_search=True)
 
-print(f"stop_reason: {response.stop_reason}")
-print(f"usage: {response.usage}")
-print(f"content block types: {[block.type for block in response.content]}")
+def main():
+    if REUSE_RAW:
+        if not RAW_FILE.exists():
+            print("錯誤：指定沿用先前輸出，但找不到 raw_output/raw.md")
+            sys.exit(1)
+        raw_markdown = RAW_FILE.read_text(encoding="utf-8")
+        print(f"沿用先前的原始輸出（{len(raw_markdown)} 字元），不呼叫 API")
+    else:
+        response = run_model(build_prompt(), 24000, use_search=True)
 
-if response.stop_reason == "max_tokens":
-    print("錯誤：回應在 max_tokens 被截斷，內容不完整，不寫入檔案")
-    sys.exit(1)
+        print(f"stop_reason: {response.stop_reason}")
+        print(f"usage: {response.usage}")
+        print(f"content block types: {[block.type for block in response.content]}")
 
-markdown = converter.convert(extract_markdown(response))
+        if response.stop_reason == "max_tokens":
+            print("錯誤：回應在 max_tokens 被截斷，內容不完整，不寫入檔案")
+            sys.exit(1)
 
-if not markdown:
-    print("錯誤：沒有抓到任何文字內容，不寫入檔案")
-    sys.exit(1)
+        raw_markdown = extract_markdown(response)
+        if raw_markdown:
+            RAW_DIR.mkdir(parents=True, exist_ok=True)
+            RAW_FILE.write_text(raw_markdown, encoding="utf-8")
+            print("已保存原始輸出到 raw_output/raw.md（後續檢查失敗時可沿用，不用再付 API 費用）")
 
-# 偵測到未翻譯英文時，不重跑整個流程，改用不帶搜尋工具的小型呼叫只翻譯英文句子
-for attempt in range(1, MAX_REPAIR_ATTEMPTS + 1):
-    english_matches = [m.group() for m in UNTRANSLATED_ENGLISH_PATTERN.finditer(strip_for_english_check(markdown))]
-    if not english_matches:
-        break
+    markdown = converter.convert(raw_markdown)
 
-    print(f"偵測到 {len(english_matches)} 處未翻譯英文句子，進行第 {attempt} 次修復")
-    for s in english_matches:
-        print(f"  - {s[:80]}")
-
-    hints = "\n".join(f"- {s[:100]}" for s in english_matches)
-    repair_prompt = """以下是一篇 Markdown 文章，內文中夾雜了未翻譯的英文句子。請只把這些英文句子翻譯成通順的繁體中文（台灣用語），其餘內容一字不改：front matter、標題、已經是中文的句子、連結文字與網址、專有名詞與產品名稱都要維持原樣。請原樣回傳完整的 Markdown（從 --- 開頭的 front matter 開始），不要加任何說明文字或程式碼框。
-
-偵測到的未翻譯英文句子（開頭片段，僅供定位）：
-{hints}
-
-文章內容：
-{article}""".format(hints=hints, article=markdown)
-
-    repair_response = run_model(repair_prompt, 16000)
-    print(f"repair usage: {repair_response.usage}")
-
-    if repair_response.stop_reason == "max_tokens":
-        print("錯誤：修復回應被截斷，不寫入檔案")
+    if not markdown:
+        print("錯誤：沒有抓到任何文字內容，不寫入檔案")
         sys.exit(1)
 
-    repaired = converter.convert(extract_markdown(repair_response))
+    # 偵測到未翻譯英文時，只把含英文的那幾行送去翻譯，不重跑整個流程
+    for attempt in range(1, MAX_REPAIR_ATTEMPTS + 1):
+        hits = english_hits(markdown)
+        if not hits:
+            break
+        print(f"偵測到 {len(hits)} 行含未翻譯英文，進行第 {attempt} 次修復")
+        for i, s in hits:
+            print(f"  - 第 {i + 1} 行：{s[:80]}")
+        markdown, changed = repair_english_lines(markdown, hits)
+        if changed == 0:
+            print("修復沒有任何變更，停止重試")
+            break
 
-    if not repaired.startswith("---"):
-        print("錯誤：修復後內容缺少 front matter，不寫入檔案")
+    remaining = english_hits(markdown)
+    if remaining:
+        print(f"錯誤：修復後仍偵測到未翻譯英文，不寫入檔案。第 {remaining[0][0] + 1} 行：{remaining[0][1][:80]}")
         sys.exit(1)
 
-    if len(repaired) < len(markdown) * MIN_REPAIR_LENGTH_RATIO:
-        print(f"錯誤：修復後內容長度異常縮短（{len(markdown)} → {len(repaired)}），疑似內容被刪減，不寫入檔案")
-        sys.exit(1)
+    trend_match = re.search(r"## 今日 GitHub Trend\n(.*?)(?=\n## |\Z)", markdown, re.DOTALL)
+    if trend_match:
+        mentioned_repos = sorted(set(re.findall(r"github\.com/([\w.\-]+/[\w.\-]+)", trend_match.group(1))))
+        if mentioned_repos:
+            append_history(TREND_HISTORY_FILE, mentioned_repos, TREND_KEEP_DAYS)
+            print(f"記錄本次 GitHub Trend 選中：{', '.join(mentioned_repos)}")
+    else:
+        print("提示：本次文章沒有 GitHub Trend 段落（可能是找不到符合條件的專案），未更新歷史紀錄")
 
-    markdown = repaired
+    tags_match = re.search(r'tags:\s*\[(.*?)\]', markdown)
+    if tags_match:
+        raw_tags = [t.strip().strip('"').strip("'") for t in tags_match.group(1).split(",")]
+        specific_topics = [t for t in raw_tags if t and t.lower() not in FIXED_CATEGORY_TAGS]
+        if specific_topics:
+            append_history(TOPIC_HISTORY_FILE, specific_topics, TOPIC_KEEP_DAYS)
+            print(f"記錄本次新聞主題：{', '.join(specific_topics)}")
+    else:
+        print("警告：找不到 tags 欄位，本次未更新主題歷史紀錄")
 
-remaining = UNTRANSLATED_ENGLISH_PATTERN.search(strip_for_english_check(markdown))
-if remaining:
-    print(f"錯誤：修復後仍偵測到未翻譯英文句子，不寫入檔案。片段：{remaining.group()[:80]}")
-    sys.exit(1)
+    # 檔名日期以文章 front matter 的 date 為準（沿用先前輸出、隔天才補跑時，日期才不會錯亂）
+    post_date = today
+    date_match = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", markdown, re.MULTILINE)
+    if date_match:
+        post_date = date_match.group(1)
 
-trend_match = re.search(r"## 今日 GitHub Trend\n(.*?)(?=\n## |\Z)", markdown, re.DOTALL)
-if trend_match:
-    mentioned_repos = sorted(set(re.findall(r"github\.com/([\w.\-]+/[\w.\-]+)", trend_match.group(1))))
-    if mentioned_repos:
-        append_history(TREND_HISTORY_FILE, mentioned_repos, TREND_KEEP_DAYS)
-        print(f"記錄本次 GitHub Trend 選中：{', '.join(mentioned_repos)}")
-else:
-    print("提示：本次文章沒有 GitHub Trend 段落（可能是找不到符合條件的專案），未更新歷史紀錄")
+    filename = f"content/posts/{post_date}-daily-digest.md"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(markdown)
 
-tags_match = re.search(r'tags:\s*\[(.*?)\]', markdown)
-if tags_match:
-    raw_tags = [t.strip().strip('"').strip("'") for t in tags_match.group(1).split(",")]
-    specific_topics = [t for t in raw_tags if t and t.lower() not in FIXED_CATEGORY_TAGS]
-    if specific_topics:
-        append_history(TOPIC_HISTORY_FILE, specific_topics, TOPIC_KEEP_DAYS)
-        print(f"記錄本次新聞主題：{', '.join(specific_topics)}")
-else:
-    print("警告：找不到 tags 欄位，本次未更新主題歷史紀錄")
+    print(f"寫入完成：{filename}（{len(markdown)} 字元）")
 
-filename = f"content/posts/{today}-daily-digest.md"
-with open(filename, "w", encoding="utf-8") as f:
-    f.write(markdown)
 
-print(f"寫入完成：{filename}（{len(markdown)} 字元）")
+if __name__ == "__main__":
+    main()

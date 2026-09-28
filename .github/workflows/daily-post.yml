@@ -2,6 +2,11 @@ name: 每日文章自動產生
 
 on:
   workflow_dispatch:
+    inputs:
+      reuse_run_id:
+        description: '沿用某次失敗 run 的原始輸出（填該 run 的編號，不會呼叫 API、不花費用）。留空則正常產生今日文章'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -20,10 +25,26 @@ jobs:
       - name: 安裝相依套件
         run: pip install anthropic opencc-python-reimplemented
 
+      - name: 下載先前 run 的原始輸出
+        if: ${{ inputs.reuse_run_id != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh run download ${{ inputs.reuse_run_id }} -n raw-output -D raw_output
+
       - name: 產生今日文章
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ABOW_CHEN_2025_TECH_PULSE_ANTHROPIC_API_KEY }}
+          REUSE_RAW: ${{ inputs.reuse_run_id != '' && '1' || '0' }}
         run: python scripts/generate_post.py
+
+      - name: 保存原始輸出（後續步驟失敗時可沿用，不必再付 API 費用）
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-output
+          path: raw_output/
+          retention-days: 7
+          if-no-files-found: ignore
 
       - name: 提交並推送
         run: |
