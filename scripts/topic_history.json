@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-15",
-    "items": [
-      "openai",
-      "anthropic"
-    ]
-  },
-  {
     "date": "2026-09-16",
     "items": [
       "chip-export-control",
@@ -99,6 +92,13 @@
     "items": [
       "xpeng",
       "china-robotics"
+    ]
+  },
+  {
+    "date": "2026-09-30",
+    "items": [
+      "anthropic",
+      "figure-ai"
     ]
   }
 ]
