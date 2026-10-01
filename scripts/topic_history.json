@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-16",
-    "items": [
-      "chip-export-control",
-      "cisco"
-    ]
-  },
-  {
     "date": "2026-09-17",
     "items": [
       "universal-robots",
@@ -99,6 +92,13 @@
     "items": [
       "anthropic",
       "figure-ai"
+    ]
+  },
+  {
+    "date": "2026-10-01",
+    "items": [
+      "openai",
+      "chip-design"
     ]
   }
 ]
