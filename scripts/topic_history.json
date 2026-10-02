@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-17",
-    "items": [
-      "universal-robots",
-      "biren-technology"
-    ]
-  },
-  {
     "date": "2026-09-18",
     "items": [
       "zhipu-ai",
@@ -99,6 +92,13 @@
     "items": [
       "openai",
       "chip-design"
+    ]
+  },
+  {
+    "date": "2026-10-02",
+    "items": [
+      "amd",
+      "world-labs"
     ]
   }
 ]
