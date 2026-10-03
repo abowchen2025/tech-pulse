@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-09-01",
-    "items": [
-      "deepseek-ai/deepseek-harness"
-    ]
-  },
-  {
-    "date": "2026-09-02",
-    "items": [
-      "pollen-robotics/microduck"
-    ]
-  },
-  {
     "date": "2026-09-04",
     "items": [
       "cactus-compute/needle"
@@ -93,6 +81,12 @@
     "date": "2026-10-01",
     "items": [
       "Tencent/WeKnora"
+    ]
+  },
+  {
+    "date": "2026-10-03",
+    "items": [
+      "NVlabs/alpamayo-recipes"
     ]
   }
 ]

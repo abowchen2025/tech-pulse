@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-18",
-    "items": [
-      "zhipu-ai",
-      "ai-chip"
-    ]
-  },
-  {
     "date": "2026-09-19",
     "items": [
       "ugo",
@@ -99,6 +92,12 @@
     "items": [
       "amd",
       "world-labs"
+    ]
+  },
+  {
+    "date": "2026-10-03",
+    "items": [
+      "fieldai"
     ]
   }
 ]
