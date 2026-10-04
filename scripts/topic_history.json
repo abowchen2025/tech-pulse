@@ -1,13 +1,5 @@
 [
   {
-    "date": "2026-09-19",
-    "items": [
-      "ugo",
-      "axelera-ai",
-      "california-ai-regulation"
-    ]
-  },
-  {
     "date": "2026-09-20",
     "items": [
       "agility-robotics",
@@ -98,6 +90,12 @@
     "date": "2026-10-03",
     "items": [
       "fieldai"
+    ]
+  },
+  {
+    "date": "2026-10-04",
+    "items": [
+      "supabase"
     ]
   }
 ]
