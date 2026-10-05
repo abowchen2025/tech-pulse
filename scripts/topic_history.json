@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-20",
-    "items": [
-      "agility-robotics",
-      "nvidia"
-    ]
-  },
-  {
     "date": "2026-09-21",
     "items": [
       "openai",
@@ -96,6 +89,13 @@
     "date": "2026-10-04",
     "items": [
       "supabase"
+    ]
+  },
+  {
+    "date": "2026-10-05",
+    "items": [
+      "humanoid-robot",
+      "us-china-ai"
     ]
   }
 ]

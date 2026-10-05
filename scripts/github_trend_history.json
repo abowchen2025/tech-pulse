@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-04",
-    "items": [
-      "cactus-compute/needle"
-    ]
-  },
-  {
     "date": "2026-09-06",
     "items": [
       "sgl-project/sglang"
@@ -93,6 +87,12 @@
     "date": "2026-10-04",
     "items": [
       "dream-num/univer"
+    ]
+  },
+  {
+    "date": "2026-10-05",
+    "items": [
+      "Panniantong/Agent-Reach"
     ]
   }
 ]
