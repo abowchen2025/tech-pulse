@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-21",
-    "items": [
-      "openai",
-      "humanoid-robot"
-    ]
-  },
-  {
     "date": "2026-09-22",
     "items": [
       "daxai-robotics",
@@ -96,6 +89,12 @@
     "items": [
       "humanoid-robot",
       "us-china-ai"
+    ]
+  },
+  {
+    "date": "2026-10-06",
+    "items": [
+      "robotics-regulation"
     ]
   }
 ]
