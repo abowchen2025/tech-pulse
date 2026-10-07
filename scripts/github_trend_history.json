@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-06",
-    "items": [
-      "sgl-project/sglang"
-    ]
-  },
-  {
     "date": "2026-09-08",
     "items": [
       "tauricresearch/tradingagents"
@@ -93,6 +87,12 @@
     "date": "2026-10-05",
     "items": [
       "Panniantong/Agent-Reach"
+    ]
+  },
+  {
+    "date": "2026-10-07",
+    "items": [
+      "earthtojake/text-to-cad"
     ]
   }
 ]
