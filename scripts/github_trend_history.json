@@ -94,5 +94,11 @@
     "items": [
       "earthtojake/text-to-cad"
     ]
+  },
+  {
+    "date": "2026-10-08",
+    "items": [
+      "thedotmack/claude-mem"
+    ]
   }
 ]
