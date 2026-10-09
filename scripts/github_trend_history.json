@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-08",
-    "items": [
-      "tauricresearch/tradingagents"
-    ]
-  },
-  {
     "date": "2026-09-13",
     "items": [
       "semantica-agi/semantica"
@@ -99,6 +93,12 @@
     "date": "2026-10-08",
     "items": [
       "thedotmack/claude-mem"
+    ]
+  },
+  {
+    "date": "2026-10-09",
+    "items": [
+      "morluto/rea"
     ]
   }
 ]

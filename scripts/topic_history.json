@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-24",
-    "items": [
-      "alibaba"
-    ]
-  },
-  {
     "date": "2026-09-25",
     "items": [
       "nvidia",
@@ -94,6 +88,13 @@
     "date": "2026-10-08",
     "items": [
       "mistral"
+    ]
+  },
+  {
+    "date": "2026-10-09",
+    "items": [
+      "kawasaki",
+      "world-labs"
     ]
   }
 ]
