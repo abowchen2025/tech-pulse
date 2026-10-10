@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-25",
-    "items": [
-      "nvidia",
-      "anthropic"
-    ]
-  },
-  {
     "date": "2026-09-26",
     "items": [
       "openai",
@@ -95,6 +88,13 @@
     "items": [
       "kawasaki",
       "world-labs"
+    ]
+  },
+  {
+    "date": "2026-10-10",
+    "items": [
+      "boston-dynamics",
+      "ai-regulation"
     ]
   }
 ]
