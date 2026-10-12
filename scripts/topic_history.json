@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-27",
-    "items": [
-      "agility-robotics"
-    ]
-  },
-  {
     "date": "2026-09-28",
     "items": [
       "meta"
@@ -95,6 +89,13 @@
     "items": [
       "byd",
       "anthropic"
+    ]
+  },
+  {
+    "date": "2026-10-12",
+    "items": [
+      "fieldai",
+      "openai"
     ]
   }
 ]
