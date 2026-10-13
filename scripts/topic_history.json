@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-28",
-    "items": [
-      "meta"
-    ]
-  },
-  {
     "date": "2026-09-29",
     "items": [
       "xpeng",
@@ -96,6 +90,13 @@
     "items": [
       "fieldai",
       "openai"
+    ]
+  },
+  {
+    "date": "2026-10-13",
+    "items": [
+      "panasonic",
+      "gemini"
     ]
   }
 ]
