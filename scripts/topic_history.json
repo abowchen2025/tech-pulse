@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-29",
-    "items": [
-      "xpeng",
-      "china-robotics"
-    ]
-  },
-  {
     "date": "2026-09-30",
     "items": [
       "anthropic",
@@ -97,6 +90,13 @@
     "items": [
       "panasonic",
       "gemini"
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "items": [
+      "tesla",
+      "mcp"
     ]
   }
 ]
