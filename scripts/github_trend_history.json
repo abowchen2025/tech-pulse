@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-13",
-    "items": [
-      "semantica-agi/semantica"
-    ]
-  },
-  {
     "date": "2026-09-15",
     "items": [
       "enactic/openarm"
@@ -117,6 +111,12 @@
     "date": "2026-10-12",
     "items": [
       "isaac-sim/IsaacLab"
+    ]
+  },
+  {
+    "date": "2026-10-15",
+    "items": [
+      "vercel-labs/skills"
     ]
   }
 ]

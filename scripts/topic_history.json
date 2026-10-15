@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-09-30",
-    "items": [
-      "anthropic",
-      "figure-ai"
-    ]
-  },
-  {
     "date": "2026-10-01",
     "items": [
       "openai",
@@ -97,6 +90,13 @@
     "items": [
       "tesla",
       "mcp"
+    ]
+  },
+  {
+    "date": "2026-10-15",
+    "items": [
+      "humanoid-robot",
+      "ai-financing"
     ]
   }
 ]
