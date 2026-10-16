@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-01",
-    "items": [
-      "openai",
-      "chip-design"
-    ]
-  },
-  {
     "date": "2026-10-02",
     "items": [
       "amd",
@@ -97,6 +90,13 @@
     "items": [
       "humanoid-robot",
       "ai-financing"
+    ]
+  },
+  {
+    "date": "2026-10-16",
+    "items": [
+      "robot-dog",
+      "microsoft-maia"
     ]
   }
 ]
