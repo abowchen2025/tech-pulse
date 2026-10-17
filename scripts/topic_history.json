@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-02",
-    "items": [
-      "amd",
-      "world-labs"
-    ]
-  },
-  {
     "date": "2026-10-03",
     "items": [
       "fieldai"
@@ -97,6 +90,13 @@
     "items": [
       "robot-dog",
       "microsoft-maia"
+    ]
+  },
+  {
+    "date": "2026-10-17",
+    "items": [
+      "export-control",
+      "open-weight-model"
     ]
   }
 ]

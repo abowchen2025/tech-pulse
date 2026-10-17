@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-09-15",
-    "items": [
-      "enactic/openarm"
-    ]
-  },
-  {
-    "date": "2026-09-16",
-    "items": [
-      "JustVugg/colibri"
-    ]
-  },
-  {
     "date": "2026-09-18",
     "items": [
       "roboflow/supervision"
@@ -117,6 +105,12 @@
     "date": "2026-10-15",
     "items": [
       "vercel-labs/skills"
+    ]
+  },
+  {
+    "date": "2026-10-17",
+    "items": [
+      "obra/superpowers"
     ]
   }
 ]
