@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-03",
-    "items": [
-      "fieldai"
-    ]
-  },
-  {
     "date": "2026-10-04",
     "items": [
       "supabase"
@@ -97,6 +91,12 @@
     "items": [
       "export-control",
       "open-weight-model"
+    ]
+  },
+  {
+    "date": "2026-10-18",
+    "items": [
+      "warehouse-robotics"
     ]
   }
 ]

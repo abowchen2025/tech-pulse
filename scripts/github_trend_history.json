@@ -112,5 +112,11 @@
     "items": [
       "obra/superpowers"
     ]
+  },
+  {
+    "date": "2026-10-18",
+    "items": [
+      "anthropics/claude-plugins-official"
+    ]
   }
 ]
