@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-04",
-    "items": [
-      "supabase"
-    ]
-  },
-  {
     "date": "2026-10-05",
     "items": [
       "humanoid-robot",
@@ -97,6 +91,12 @@
     "date": "2026-10-18",
     "items": [
       "warehouse-robotics"
+    ]
+  },
+  {
+    "date": "2026-10-19",
+    "items": [
+      "gemini-4-argon"
     ]
   }
 ]

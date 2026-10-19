@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-18",
-    "items": [
-      "roboflow/supervision"
-    ]
-  },
-  {
     "date": "2026-09-21",
     "items": [
       "deepseek-ai/deepseek-harness"
@@ -117,6 +111,12 @@
     "date": "2026-10-18",
     "items": [
       "anthropics/claude-plugins-official"
+    ]
+  },
+  {
+    "date": "2026-10-19",
+    "items": [
+      "addyosmani/agent-skills"
     ]
   }
 ]
