@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-05",
-    "items": [
-      "humanoid-robot",
-      "us-china-ai"
-    ]
-  },
-  {
     "date": "2026-10-06",
     "items": [
       "robotics-regulation"
@@ -97,6 +90,13 @@
     "date": "2026-10-19",
     "items": [
       "gemini-4-argon"
+    ]
+  },
+  {
+    "date": "2026-10-20",
+    "items": [
+      "openai",
+      "anthropic"
     ]
   }
 ]

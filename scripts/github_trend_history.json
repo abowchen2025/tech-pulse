@@ -118,5 +118,11 @@
     "items": [
       "addyosmani/agent-skills"
     ]
+  },
+  {
+    "date": "2026-10-20",
+    "items": [
+      "stablyai/orca"
+    ]
   }
 ]
