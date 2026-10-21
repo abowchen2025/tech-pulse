@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-06",
-    "items": [
-      "robotics-regulation"
-    ]
-  },
-  {
     "date": "2026-10-07",
     "items": [
       "broadcom"
@@ -97,6 +91,13 @@
     "items": [
       "openai",
       "anthropic"
+    ]
+  },
+  {
+    "date": "2026-10-21",
+    "items": [
+      "faraday-future",
+      "nvidia-chip"
     ]
   }
 ]
