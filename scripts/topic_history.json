@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-07",
-    "items": [
-      "broadcom"
-    ]
-  },
-  {
     "date": "2026-10-08",
     "items": [
       "mistral"
@@ -98,6 +92,13 @@
     "items": [
       "faraday-future",
       "nvidia-chip"
+    ]
+  },
+  {
+    "date": "2026-10-22",
+    "items": [
+      "tesla-optimus",
+      "chip-export-control"
     ]
   }
 ]
