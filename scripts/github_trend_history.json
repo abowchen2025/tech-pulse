@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-09-21",
-    "items": [
-      "deepseek-ai/deepseek-harness"
-    ]
-  },
-  {
-    "date": "2026-09-22",
-    "items": [
-      "trycua/cua"
-    ]
-  },
-  {
     "date": "2026-09-24",
     "items": [
       "RLinf/RLinf"
@@ -129,6 +117,12 @@
     "date": "2026-10-21",
     "items": [
       "Graphify-Labs/graphify"
+    ]
+  },
+  {
+    "date": "2026-10-23",
+    "items": [
+      "wshobson/agents"
     ]
   }
 ]

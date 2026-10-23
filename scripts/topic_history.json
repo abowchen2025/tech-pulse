@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-08",
-    "items": [
-      "mistral"
-    ]
-  },
-  {
     "date": "2026-10-09",
     "items": [
       "kawasaki",
@@ -99,6 +93,13 @@
     "items": [
       "tesla-optimus",
       "chip-export-control"
+    ]
+  },
+  {
+    "date": "2026-10-23",
+    "items": [
+      "agile-robotics",
+      "ai-capex"
     ]
   }
 ]
