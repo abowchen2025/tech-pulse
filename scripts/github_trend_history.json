@@ -124,5 +124,11 @@
     "items": [
       "wshobson/agents"
     ]
+  },
+  {
+    "date": "2026-10-24",
+    "items": [
+      "NVIDIA/OpenShell"
+    ]
   }
 ]

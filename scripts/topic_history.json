@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-09",
-    "items": [
-      "kawasaki",
-      "world-labs"
-    ]
-  },
-  {
     "date": "2026-10-10",
     "items": [
       "boston-dynamics",
@@ -100,6 +93,13 @@
     "items": [
       "agile-robotics",
       "ai-capex"
+    ]
+  },
+  {
+    "date": "2026-10-24",
+    "items": [
+      "humanoid-robot",
+      "export-control"
     ]
   }
 ]
