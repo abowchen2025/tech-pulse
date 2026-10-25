@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-24",
-    "items": [
-      "RLinf/RLinf"
-    ]
-  },
-  {
     "date": "2026-09-25",
     "items": [
       "google/ax"
@@ -129,6 +123,12 @@
     "date": "2026-10-24",
     "items": [
       "NVIDIA/OpenShell"
+    ]
+  },
+  {
+    "date": "2026-10-25",
+    "items": [
+      "anomalyco/opencode"
     ]
   }
 ]

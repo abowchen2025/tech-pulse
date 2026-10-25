@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-10",
-    "items": [
-      "boston-dynamics",
-      "ai-regulation"
-    ]
-  },
-  {
     "date": "2026-10-11",
     "items": [
       "byd",
@@ -100,6 +93,13 @@
     "items": [
       "humanoid-robot",
       "export-control"
+    ]
+  },
+  {
+    "date": "2026-10-25",
+    "items": [
+      "openai",
+      "robotics-funding"
     ]
   }
 ]
