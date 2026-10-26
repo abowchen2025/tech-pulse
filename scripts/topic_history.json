@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-11",
-    "items": [
-      "byd",
-      "anthropic"
-    ]
-  },
-  {
     "date": "2026-10-12",
     "items": [
       "fieldai",
@@ -100,6 +93,13 @@
     "items": [
       "openai",
       "robotics-funding"
+    ]
+  },
+  {
+    "date": "2026-10-26",
+    "items": [
+      "pollen-robotics",
+      "deepseek"
     ]
   }
 ]

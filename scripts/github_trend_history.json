@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-25",
-    "items": [
-      "google/ax"
-    ]
-  },
-  {
     "date": "2026-09-28",
     "items": [
       "dora-rs/dora"
@@ -129,6 +123,12 @@
     "date": "2026-10-25",
     "items": [
       "anomalyco/opencode"
+    ]
+  },
+  {
+    "date": "2026-10-26",
+    "items": [
+      "pollen-robotics/microduck"
     ]
   }
 ]
