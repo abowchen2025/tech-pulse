@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-12",
-    "items": [
-      "fieldai",
-      "openai"
-    ]
-  },
-  {
     "date": "2026-10-13",
     "items": [
       "panasonic",
@@ -100,6 +93,13 @@
     "items": [
       "pollen-robotics",
       "deepseek"
+    ]
+  },
+  {
+    "date": "2026-10-27",
+    "items": [
+      "hexagon-robotics",
+      "aleph-alpha"
     ]
   }
 ]
