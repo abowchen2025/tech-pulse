@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-13",
-    "items": [
-      "panasonic",
-      "gemini"
-    ]
-  },
-  {
     "date": "2026-10-14",
     "items": [
       "tesla",
@@ -100,6 +93,13 @@
     "items": [
       "hexagon-robotics",
       "aleph-alpha"
+    ]
+  },
+  {
+    "date": "2026-10-28",
+    "items": [
+      "meta",
+      "oracle"
     ]
   }
 ]
