@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-14",
-    "items": [
-      "tesla",
-      "mcp"
-    ]
-  },
-  {
     "date": "2026-10-15",
     "items": [
       "humanoid-robot",
@@ -100,6 +93,13 @@
     "items": [
       "meta",
       "oracle"
+    ]
+  },
+  {
+    "date": "2026-10-29",
+    "items": [
+      "export-control",
+      "nvidia"
     ]
   }
 ]

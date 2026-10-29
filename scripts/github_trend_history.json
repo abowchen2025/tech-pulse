@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-28",
-    "items": [
-      "dora-rs/dora"
-    ]
-  },
-  {
     "date": "2026-09-30",
     "items": [
       "NVIDIA/OpenShell"
@@ -141,6 +135,12 @@
     "date": "2026-10-28",
     "items": [
       "TauricResearch/TradingAgents"
+    ]
+  },
+  {
+    "date": "2026-10-29",
+    "items": [
+      "nightly-labs/openbot"
     ]
   }
 ]
