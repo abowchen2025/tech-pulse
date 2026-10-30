@@ -142,5 +142,11 @@
     "items": [
       "nightly-labs/openbot"
     ]
+  },
+  {
+    "date": "2026-10-30",
+    "items": [
+      "CopilotKit/openbot"
+    ]
   }
 ]

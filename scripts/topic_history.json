@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-15",
-    "items": [
-      "humanoid-robot",
-      "ai-financing"
-    ]
-  },
-  {
     "date": "2026-10-16",
     "items": [
       "robot-dog",
@@ -100,6 +93,12 @@
     "items": [
       "export-control",
       "nvidia"
+    ]
+  },
+  {
+    "date": "2026-10-30",
+    "items": [
+      "tpu"
     ]
   }
 ]
