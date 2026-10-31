@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-16",
-    "items": [
-      "robot-dog",
-      "microsoft-maia"
-    ]
-  },
-  {
     "date": "2026-10-17",
     "items": [
       "export-control",
@@ -99,6 +92,13 @@
     "date": "2026-10-30",
     "items": [
       "tpu"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "items": [
+      "humanoid-robot",
+      "anthropic"
     ]
   }
 ]

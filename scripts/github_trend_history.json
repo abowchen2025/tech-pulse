@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-30",
-    "items": [
-      "NVIDIA/OpenShell"
-    ]
-  },
-  {
     "date": "2026-10-01",
     "items": [
       "Tencent/WeKnora"
@@ -147,6 +141,12 @@
     "date": "2026-10-30",
     "items": [
       "CopilotKit/openbot"
+    ]
+  },
+  {
+    "date": "2026-10-31",
+    "items": [
+      "HKUDS/DeepTutor"
     ]
   }
 ]
