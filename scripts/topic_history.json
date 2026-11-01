@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-17",
-    "items": [
-      "export-control",
-      "open-weight-model"
-    ]
-  },
-  {
     "date": "2026-10-18",
     "items": [
       "warehouse-robotics"
@@ -99,6 +92,12 @@
     "items": [
       "humanoid-robot",
       "anthropic"
+    ]
+  },
+  {
+    "date": "2026-11-01",
+    "items": [
+      "openai"
     ]
   }
 ]
