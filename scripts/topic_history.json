@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-18",
-    "items": [
-      "warehouse-robotics"
-    ]
-  },
-  {
     "date": "2026-10-19",
     "items": [
       "gemini-4-argon"
@@ -98,6 +92,13 @@
     "date": "2026-11-01",
     "items": [
       "openai"
+    ]
+  },
+  {
+    "date": "2026-11-02",
+    "items": [
+      "deepseek",
+      "google"
     ]
   }
 ]
