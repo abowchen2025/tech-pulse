@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-19",
-    "items": [
-      "gemini-4-argon"
-    ]
-  },
-  {
     "date": "2026-10-20",
     "items": [
       "openai",
@@ -99,6 +93,13 @@
     "items": [
       "deepseek",
       "google"
+    ]
+  },
+  {
+    "date": "2026-11-03",
+    "items": [
+      "ai-chip",
+      "eu-ai-act"
     ]
   }
 ]

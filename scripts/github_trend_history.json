@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-03",
-    "items": [
-      "NVlabs/alpamayo-recipes"
-    ]
-  },
-  {
     "date": "2026-10-04",
     "items": [
       "dream-num/univer"
@@ -153,6 +147,12 @@
     "date": "2026-11-02",
     "items": [
       "deepseek-ai/dsh-superagent-prototype"
+    ]
+  },
+  {
+    "date": "2026-11-03",
+    "items": [
+      "thedotmack/claude-mem"
     ]
   }
 ]
