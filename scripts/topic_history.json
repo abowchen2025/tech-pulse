@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-21",
-    "items": [
-      "faraday-future",
-      "nvidia-chip"
-    ]
-  },
-  {
     "date": "2026-10-22",
     "items": [
       "tesla-optimus",
@@ -100,6 +93,12 @@
     "items": [
       "mistral",
       "meta"
+    ]
+  },
+  {
+    "date": "2026-11-05",
+    "items": [
+      "dimensional"
     ]
   }
 ]
