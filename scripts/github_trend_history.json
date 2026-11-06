@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-10-04",
-    "items": [
-      "dream-num/univer"
-    ]
-  },
-  {
-    "date": "2026-10-05",
-    "items": [
-      "Panniantong/Agent-Reach"
-    ]
-  },
-  {
     "date": "2026-10-07",
     "items": [
       "earthtojake/text-to-cad"
@@ -153,6 +141,12 @@
     "date": "2026-11-03",
     "items": [
       "thedotmack/claude-mem"
+    ]
+  },
+  {
+    "date": "2026-11-06",
+    "items": [
+      "NVIDIA/auto-ontology"
     ]
   }
 ]

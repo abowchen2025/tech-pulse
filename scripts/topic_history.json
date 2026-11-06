@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-22",
-    "items": [
-      "tesla-optimus",
-      "chip-export-control"
-    ]
-  },
-  {
     "date": "2026-10-23",
     "items": [
       "agile-robotics",
@@ -99,6 +92,13 @@
     "date": "2026-11-05",
     "items": [
       "dimensional"
+    ]
+  },
+  {
+    "date": "2026-11-06",
+    "items": [
+      "humanoid-robot",
+      "enterprise-ai-agent"
     ]
   }
 ]
