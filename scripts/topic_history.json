@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-23",
-    "items": [
-      "agile-robotics",
-      "ai-capex"
-    ]
-  },
-  {
     "date": "2026-10-24",
     "items": [
       "humanoid-robot",
@@ -99,6 +92,13 @@
     "items": [
       "humanoid-robot",
       "enterprise-ai-agent"
+    ]
+  },
+  {
+    "date": "2026-11-07",
+    "items": [
+      "moonshot-ai",
+      "crowdstrike"
     ]
   }
 ]
