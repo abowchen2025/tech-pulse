@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-24",
-    "items": [
-      "humanoid-robot",
-      "export-control"
-    ]
-  },
-  {
     "date": "2026-10-25",
     "items": [
       "openai",
@@ -99,6 +92,13 @@
     "items": [
       "moonshot-ai",
       "crowdstrike"
+    ]
+  },
+  {
+    "date": "2026-11-08",
+    "items": [
+      "amd",
+      "export-control"
     ]
   }
 ]
