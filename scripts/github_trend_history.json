@@ -1,23 +1,5 @@
 [
   {
-    "date": "2026-10-07",
-    "items": [
-      "earthtojake/text-to-cad"
-    ]
-  },
-  {
-    "date": "2026-10-08",
-    "items": [
-      "thedotmack/claude-mem"
-    ]
-  },
-  {
-    "date": "2026-10-09",
-    "items": [
-      "morluto/rea"
-    ]
-  },
-  {
     "date": "2026-10-10",
     "items": [
       "RLinf/RLinf"
@@ -147,6 +129,12 @@
     "date": "2026-11-06",
     "items": [
       "NVIDIA/auto-ontology"
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "items": [
+      "KKKKhazix/agent-autoloop"
     ]
   }
 ]

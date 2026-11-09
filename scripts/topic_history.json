@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-25",
-    "items": [
-      "openai",
-      "robotics-funding"
-    ]
-  },
-  {
     "date": "2026-10-26",
     "items": [
       "pollen-robotics",
@@ -99,6 +92,13 @@
     "items": [
       "amd",
       "export-control"
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "items": [
+      "warehouse-robot",
+      "ai-infrastructure"
     ]
   }
 ]
