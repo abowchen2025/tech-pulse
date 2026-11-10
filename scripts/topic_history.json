@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-26",
-    "items": [
-      "pollen-robotics",
-      "deepseek"
-    ]
-  },
-  {
     "date": "2026-10-27",
     "items": [
       "hexagon-robotics",
@@ -99,6 +92,12 @@
     "items": [
       "warehouse-robot",
       "ai-infrastructure"
+    ]
+  },
+  {
+    "date": "2026-11-10",
+    "items": [
+      "anthropic"
     ]
   }
 ]
