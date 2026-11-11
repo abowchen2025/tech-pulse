@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-27",
-    "items": [
-      "hexagon-robotics",
-      "aleph-alpha"
-    ]
-  },
-  {
     "date": "2026-10-28",
     "items": [
       "meta",
@@ -98,6 +91,13 @@
     "date": "2026-11-10",
     "items": [
       "anthropic"
+    ]
+  },
+  {
+    "date": "2026-11-11",
+    "items": [
+      "boston-dynamics",
+      "us-china-ai-policy"
     ]
   }
 ]

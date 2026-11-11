@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-10-10",
-    "items": [
-      "RLinf/RLinf"
-    ]
-  },
-  {
-    "date": "2026-10-11",
-    "items": [
-      "zhongerxin/iPhone-use"
-    ]
-  },
-  {
     "date": "2026-10-12",
     "items": [
       "isaac-sim/IsaacLab"
@@ -135,6 +123,12 @@
     "date": "2026-11-09",
     "items": [
       "KKKKhazix/agent-autoloop"
+    ]
+  },
+  {
+    "date": "2026-11-11",
+    "items": [
+      "google-deepmind/mujoco"
     ]
   }
 ]
