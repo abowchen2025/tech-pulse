@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-28",
-    "items": [
-      "meta",
-      "oracle"
-    ]
-  },
-  {
     "date": "2026-10-29",
     "items": [
       "export-control",
@@ -98,6 +91,12 @@
     "items": [
       "boston-dynamics",
       "us-china-ai-policy"
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "items": [
+      "gemini-robotics"
     ]
   }
 ]

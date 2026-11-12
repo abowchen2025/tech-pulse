@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-12",
-    "items": [
-      "isaac-sim/IsaacLab"
-    ]
-  },
-  {
     "date": "2026-10-15",
     "items": [
       "vercel-labs/skills"
@@ -129,6 +123,12 @@
     "date": "2026-11-11",
     "items": [
       "google-deepmind/mujoco"
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "items": [
+      "vercel-labs/agent-browser"
     ]
   }
 ]
