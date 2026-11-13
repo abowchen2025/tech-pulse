@@ -130,5 +130,11 @@
     "items": [
       "vercel-labs/agent-browser"
     ]
+  },
+  {
+    "date": "2026-11-13",
+    "items": [
+      "iflytek/astron-rpa"
+    ]
   }
 ]

@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-29",
-    "items": [
-      "export-control",
-      "nvidia"
-    ]
-  },
-  {
     "date": "2026-10-30",
     "items": [
       "tpu"
@@ -97,6 +90,13 @@
     "date": "2026-11-12",
     "items": [
       "gemini-robotics"
+    ]
+  },
+  {
+    "date": "2026-11-13",
+    "items": [
+      "frontier-ai",
+      "softbank"
     ]
   }
 ]
