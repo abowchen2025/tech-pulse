@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-30",
-    "items": [
-      "tpu"
-    ]
-  },
-  {
     "date": "2026-10-31",
     "items": [
       "humanoid-robot",
@@ -97,6 +91,13 @@
     "items": [
       "frontier-ai",
       "softbank"
+    ]
+  },
+  {
+    "date": "2026-11-14",
+    "items": [
+      "humanoid-robot",
+      "ai-chip"
     ]
   }
 ]
