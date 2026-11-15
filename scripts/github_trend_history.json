@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-15",
-    "items": [
-      "vercel-labs/skills"
-    ]
-  },
-  {
     "date": "2026-10-17",
     "items": [
       "obra/superpowers"
@@ -141,6 +135,12 @@
     "date": "2026-11-14",
     "items": [
       "D4Vinci/Scrapling"
+    ]
+  },
+  {
+    "date": "2026-11-15",
+    "items": [
+      "ChromeDevTools/chrome-devtools-mcp"
     ]
   }
 ]

@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-10-31",
-    "items": [
-      "humanoid-robot",
-      "anthropic"
-    ]
-  },
-  {
     "date": "2026-11-01",
     "items": [
       "openai"
@@ -98,6 +91,12 @@
     "items": [
       "humanoid-robot",
       "ai-chip"
+    ]
+  },
+  {
+    "date": "2026-11-15",
+    "items": [
+      "openai"
     ]
   }
 ]
