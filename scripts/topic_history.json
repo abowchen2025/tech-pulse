@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-11-01",
-    "items": [
-      "openai"
-    ]
-  },
-  {
     "date": "2026-11-02",
     "items": [
       "deepseek",
@@ -97,6 +91,13 @@
     "date": "2026-11-15",
     "items": [
       "openai"
+    ]
+  },
+  {
+    "date": "2026-11-16",
+    "items": [
+      "unitree",
+      "export-control"
     ]
   }
 ]

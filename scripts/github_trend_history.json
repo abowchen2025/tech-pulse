@@ -142,5 +142,11 @@
     "items": [
       "ChromeDevTools/chrome-devtools-mcp"
     ]
+  },
+  {
+    "date": "2026-11-16",
+    "items": [
+      "QwenLM/qwen-code"
+    ]
   }
 ]
