@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-11-02",
-    "items": [
-      "deepseek",
-      "google"
-    ]
-  },
-  {
     "date": "2026-11-03",
     "items": [
       "ai-chip",
@@ -98,6 +91,13 @@
     "items": [
       "unitree",
       "export-control"
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "items": [
+      "amd",
+      "anthropic"
     ]
   }
 ]
