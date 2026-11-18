@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-10-17",
-    "items": [
-      "obra/superpowers"
-    ]
-  },
-  {
-    "date": "2026-10-18",
-    "items": [
-      "anthropics/claude-plugins-official"
-    ]
-  },
-  {
     "date": "2026-10-19",
     "items": [
       "addyosmani/agent-skills"
@@ -147,6 +135,12 @@
     "date": "2026-11-16",
     "items": [
       "QwenLM/qwen-code"
+    ]
+  },
+  {
+    "date": "2026-11-18",
+    "items": [
+      "obra/superpowers"
     ]
   }
 ]

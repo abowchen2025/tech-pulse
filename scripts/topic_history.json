@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-11-03",
-    "items": [
-      "ai-chip",
-      "eu-ai-act"
-    ]
-  },
-  {
     "date": "2026-11-04",
     "items": [
       "mistral",
@@ -98,6 +91,13 @@
     "items": [
       "amd",
       "anthropic"
+    ]
+  },
+  {
+    "date": "2026-11-18",
+    "items": [
+      "agile-robots",
+      "gemini"
     ]
   }
 ]
