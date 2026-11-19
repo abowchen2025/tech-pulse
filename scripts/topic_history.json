@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-11-04",
-    "items": [
-      "mistral",
-      "meta"
-    ]
-  },
-  {
     "date": "2026-11-05",
     "items": [
       "dimensional"
@@ -98,6 +91,13 @@
     "items": [
       "agile-robots",
       "gemini"
+    ]
+  },
+  {
+    "date": "2026-11-19",
+    "items": [
+      "toyota",
+      "ai-lawsuit"
     ]
   }
 ]
