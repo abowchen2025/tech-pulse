@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-10-19",
-    "items": [
-      "addyosmani/agent-skills"
-    ]
-  },
-  {
-    "date": "2026-10-20",
-    "items": [
-      "stablyai/orca"
-    ]
-  },
-  {
     "date": "2026-10-21",
     "items": [
       "Graphify-Labs/graphify"
@@ -141,6 +129,12 @@
     "date": "2026-11-18",
     "items": [
       "obra/superpowers"
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "items": [
+      "NVIDIA/SkillEvaluator"
     ]
   }
 ]

@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-11-05",
-    "items": [
-      "dimensional"
-    ]
-  },
-  {
     "date": "2026-11-06",
     "items": [
       "humanoid-robot",
@@ -98,6 +92,13 @@
     "items": [
       "toyota",
       "ai-lawsuit"
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "items": [
+      "xpeng",
+      "openai"
     ]
   }
 ]
