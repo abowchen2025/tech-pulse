@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-11-06",
-    "items": [
-      "humanoid-robot",
-      "enterprise-ai-agent"
-    ]
-  },
-  {
     "date": "2026-11-07",
     "items": [
       "moonshot-ai",
@@ -99,6 +92,13 @@
     "items": [
       "xpeng",
       "openai"
+    ]
+  },
+  {
+    "date": "2026-11-21",
+    "items": [
+      "humanoid-robot",
+      "chip-export-control"
     ]
   }
 ]

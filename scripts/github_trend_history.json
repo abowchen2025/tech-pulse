@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-21",
-    "items": [
-      "Graphify-Labs/graphify"
-    ]
-  },
-  {
     "date": "2026-10-23",
     "items": [
       "wshobson/agents"
@@ -135,6 +129,12 @@
     "date": "2026-11-20",
     "items": [
       "NVIDIA/SkillEvaluator"
+    ]
+  },
+  {
+    "date": "2026-11-21",
+    "items": [
+      "homeassistant-ai/ha-mcp"
     ]
   }
 ]
