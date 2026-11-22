@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-11-07",
-    "items": [
-      "moonshot-ai",
-      "crowdstrike"
-    ]
-  },
-  {
     "date": "2026-11-08",
     "items": [
       "amd",
@@ -99,6 +92,13 @@
     "items": [
       "humanoid-robot",
       "chip-export-control"
+    ]
+  },
+  {
+    "date": "2026-11-22",
+    "items": [
+      "boston-dynamics",
+      "chip-backed-debt"
     ]
   }
 ]
