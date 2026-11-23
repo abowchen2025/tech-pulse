@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-23",
-    "items": [
-      "wshobson/agents"
-    ]
-  },
-  {
     "date": "2026-10-24",
     "items": [
       "NVIDIA/OpenShell"
@@ -141,6 +135,12 @@
     "date": "2026-11-22",
     "items": [
       "addyosmani/agent-skills"
+    ]
+  },
+  {
+    "date": "2026-11-23",
+    "items": [
+      "HybridRobotics/supermimic"
     ]
   }
 ]
