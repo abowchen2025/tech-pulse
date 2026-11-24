@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-11-09",
-    "items": [
-      "warehouse-robot",
-      "ai-infrastructure"
-    ]
-  },
-  {
     "date": "2026-11-10",
     "items": [
       "anthropic"
@@ -98,6 +91,12 @@
     "date": "2026-11-23",
     "items": [
       "nvidia"
+    ]
+  },
+  {
+    "date": "2026-11-24",
+    "items": [
+      "amd"
     ]
   }
 ]

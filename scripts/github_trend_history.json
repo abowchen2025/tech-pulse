@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-10-24",
-    "items": [
-      "NVIDIA/OpenShell"
-    ]
-  },
-  {
     "date": "2026-10-25",
     "items": [
       "anomalyco/opencode"
@@ -141,6 +135,12 @@
     "date": "2026-11-23",
     "items": [
       "HybridRobotics/supermimic"
+    ]
+  },
+  {
+    "date": "2026-11-24",
+    "items": [
+      "earthtojake/text-to-cad"
     ]
   }
 ]
