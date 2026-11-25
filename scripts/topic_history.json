@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-11-10",
-    "items": [
-      "anthropic"
-    ]
-  },
-  {
     "date": "2026-11-11",
     "items": [
       "boston-dynamics",
@@ -97,6 +91,13 @@
     "date": "2026-11-24",
     "items": [
       "amd"
+    ]
+  },
+  {
+    "date": "2026-11-25",
+    "items": [
+      "embo",
+      "world-model"
     ]
   }
 ]
