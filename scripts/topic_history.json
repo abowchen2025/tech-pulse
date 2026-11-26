@@ -1,12 +1,5 @@
 [
   {
-    "date": "2026-11-11",
-    "items": [
-      "boston-dynamics",
-      "us-china-ai-policy"
-    ]
-  },
-  {
     "date": "2026-11-12",
     "items": [
       "gemini-robotics"
@@ -98,6 +91,13 @@
     "items": [
       "embo",
       "world-model"
+    ]
+  },
+  {
+    "date": "2026-11-26",
+    "items": [
+      "xpeng",
+      "export-control"
     ]
   }
 ]

@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-10-25",
-    "items": [
-      "anomalyco/opencode"
-    ]
-  },
-  {
-    "date": "2026-10-26",
-    "items": [
-      "pollen-robotics/microduck"
-    ]
-  },
-  {
     "date": "2026-10-27",
     "items": [
       "makecindy/cindy"
@@ -141,6 +129,12 @@
     "date": "2026-11-24",
     "items": [
       "earthtojake/text-to-cad"
+    ]
+  },
+  {
+    "date": "2026-11-26",
+    "items": [
+      "mvanhorn/last30days-skill"
     ]
   }
 ]
